@@ -1,0 +1,9 @@
+grids present
+  opt-125m  MeZO   5/5  1e-8 1e-7 1e-6 1e-5 1e-4
+  opt-125m  MpSub  5/5  1e-1 3e-1 1.0 3.0 10.0
+  opt-350m  MeZO   3/5  1e-7 1e-6 1e-5
+  opt-350m  MpSub  1/5  1e-1
+
+fig_sensitivity_models.pdf NOT written -- incomplete grids:
+  opt-350m MeZO missing 1e-8 1e-4  (6 runs at 3 seeds)
+  opt-350m MpSub missing 3e-1 1.0 3.0 10.0  (12 runs at 3 seeds)

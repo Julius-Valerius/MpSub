@@ -1,0 +1,20 @@
+# Requires Python 3.11. tokenizers 0.13.3 ships wheels only up to cp311 and
+# its pyo3 0.18 does not build on 3.12. transformers is held at 4.28.1
+# because trainer.py forks the Trainer of that release and imports internal
+# modules that later versions moved or removed. Install torch separately,
+# matching the CUDA version of the host.
+
+transformers==4.28.1
+tokenizers==0.13.3
+datasets==2.13.0
+accelerate==0.20.3
+sentencepiece==0.1.99
+huggingface_hub==0.16.4  # 0.17 removed cached_download, used by 4.28.1
+numpy>=1.24,<2.0
+
+pyarrow>=8.0.0,<13.0.0   # 13.0 renamed pa.PyExtensionType, used by datasets 2.13
+setuptools<81            # 81 removed pkg_resources, imported by accelerate 0.20.3
+fsspec<2023.9            # 2023.9.2 rejects the '**' pattern datasets 2.13 passes
+
+tqdm
+scikit-learn

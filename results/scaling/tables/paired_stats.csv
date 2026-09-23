@@ -1,0 +1,5 @@
+model,error_term,n_seeds,per_seed_differences,mean_difference,sd,df,t,p_two_sided,ci95_lo,ci95_hi
+opt-125m,sample_sd_this_model,3,-0.0179;-0.0179;+0.0000,-0.0119,0.010310,2,-2.000,0.184,-0.0375,+0.0137
+opt-125m,pooled_operating_point_sd,3,-0.0179;-0.0179;+0.0000,-0.0119,0.019288,8,-1.069,0.316,-0.0376,+0.0138
+opt-350m,sample_sd_this_model,3,+0.0000;+0.0357;-0.0179,+0.0060,0.027277,2,0.378,0.742,-0.0618,+0.0737
+opt-350m,pooled_operating_point_sd,3,+0.0000;+0.0357;-0.0179,+0.0060,0.019288,8,0.535,0.608,-0.0197,+0.0316

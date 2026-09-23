@@ -1,0 +1,5 @@
+model,method,hyperparameter,selection_rule,n_seeds,grid_points_searched,grid_points_available,forward_budget_per_run,forward_passes_including_search,dev_loss_mean,dev_loss_min,dev_loss_max,dev_accuracy_mean,dev_accuracy_min,dev_accuracy_max,test_accuracy_mean,test_accuracy_min,test_accuracy_max
+opt-125m,MeZO,1e-6,selected on mean development accuracy,3,5,5,8400,42000,0.702816,0.625171,0.783995,0.760000,0.740000,0.800000,0.684524,0.678571,0.696429
+opt-125m,MpSub,1e-1,fixed default radius (no search),3,1,5,8400,8400,0.673505,0.620065,0.722646,0.773333,0.740000,0.820000,0.672619,0.660714,0.678571
+opt-350m,MeZO,1e-6,selected on mean development accuracy,3,3,3,8400,25200,0.679091,0.582012,0.742895,0.780000,0.720000,0.880000,0.684524,0.678571,0.696429
+opt-350m,MpSub,1e-1,fixed default radius (no search),3,1,1,8400,8400,0.738119,0.715281,0.773672,0.786667,0.760000,0.820000,0.690476,0.678571,0.714286

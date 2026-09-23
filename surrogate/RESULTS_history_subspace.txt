@@ -1,0 +1,30 @@
+surrogate: n=2000 r=10 m=4000 p=20 budget=4000 seeds=3
+metric: final full-sample loss normalized by f(x0); hit = evaluations to reach 0.5*f0
+
+--- batch=512 ---
+  mezo       loss=2.357e-05   hit=68      {'lr': 0.01}
+  nomom      loss=1.328e-05   hit=532     {'delta0': 0.1}
+  rand       loss=1.121e-05   hit=1260    {'delta0': 0.01}
+  gradmom    loss=1.962e-05   hit=322     {'delta0': 0.1, 'beta': 0.9}
+  hist       loss=1.207e-05   hit=1316    {'delta0': 0.01}
+  oracle     loss=8.454e-06   hit=84      {'delta0': 1.0}
+  ratios: nomom/rand=1.19x gradmom/rand=0.57x hist/rand=0.93x oracle/rand=1.33x
+
+--- batch=64 ---
+  mezo       loss=2.494e-05   hit=66      {'lr': 0.01}
+  nomom      loss=1.455e-05   hit=574     {'delta0': 0.1}
+  rand       loss=1.318e-05   hit=1330    {'delta0': 0.01}
+  gradmom    loss=1.919e-05   hit=1344    {'delta0': 0.01, 'beta': 0.99}
+  hist       loss=2.211e-05   hit=336     {'delta0': 0.1}
+  oracle     loss=8.459e-06   hit=84      {'delta0': 1.0}
+  ratios: nomom/rand=1.10x gradmom/rand=0.69x hist/rand=0.60x oracle/rand=1.56x
+
+--- batch=8 ---
+  mezo       loss=4.252e-05   hit=85      {'lr': 0.01}
+  nomom      loss=4.664e-05   hit=798     {'delta0': 0.1}
+  rand       loss=3.291e-05   hit=490     {'delta0': 0.1}
+  gradmom    loss=3.489e-05   hit=434     {'delta0': 0.1, 'beta': 0.99}
+  hist       loss=3.502e-05   hit=420     {'delta0': 0.1}
+  oracle     loss=8.478e-06   hit=168     {'delta0': 0.1}
+  ratios: nomom/rand=1.42x gradmom/rand=0.94x hist/rand=0.94x oracle/rand=3.88x
+

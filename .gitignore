@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch & model weights / checkpoints
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+model/
+
+# Hugging Face & runtime cache
+.cache/
+hf_cache/
+hf_runtime_cache/
+wandb/
+
+# Virtual environments & package manager caches
+.venv/
+venv/
+env/
+.uv/
+.uv-cache/
+
+# LaTeX auxiliary files (preserve pdf, tex, bbl, cls, bst)
+*.aux
+*.out
+*.thm
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.blg
+
+# Logs (keep benchmark result logs for reproduction)
+*.log
+!results/hp_cost/*.log
+
+# IDE & OS specific files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+tmp/

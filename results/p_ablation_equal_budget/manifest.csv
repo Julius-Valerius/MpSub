@@ -1,0 +1,16 @@
+p,seed,forward_budget,forward_per_step,steps,actual_training_forwards,budget_shortfall,status_at_launch,log
+5,0,8400,12,700,8400,0,complete,p5_s0.log
+5,1,8400,12,700,8400,0,complete,p5_s1.log
+5,2,8400,12,700,8400,0,complete,p5_s2.log
+10,0,8400,22,381,8382,18,complete,p10_s0.log
+10,1,8400,22,381,8382,18,complete,p10_s1.log
+10,2,8400,22,381,8382,18,complete,p10_s2.log
+15,0,8400,32,262,8384,16,complete,p15_s0.log
+15,1,8400,32,262,8384,16,complete,p15_s1.log
+15,2,8400,32,262,8384,16,complete,p15_s2.log
+25,0,8400,52,161,8372,28,complete,p25_s0.log
+25,1,8400,52,161,8372,28,complete,p25_s1.log
+25,2,8400,52,161,8372,28,complete,p25_s2.log
+30,0,8400,62,135,8370,30,complete,p30_s0.log
+30,1,8400,62,135,8370,30,complete,p30_s1.log
+30,2,8400,62,135,8370,30,complete,p30_s2.log

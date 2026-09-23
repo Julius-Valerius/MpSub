@@ -1,0 +1,21 @@
+
+========================================================================
+results: /tmp/scaling/out/results/opt-350m
+model facebook/opt-350m | preset reduced | budget 8400 passes/config | MpSub 200 x 42 | MeZO 4200 x 2
+========================================================================
+MeZO   lr        test acc               dev acc               
+       1e-6      0.685 (0.679-0.696)    0.780 (0.720-0.880)    n=3
+       1e-7      0.661 (0.625-0.679)    0.700 (0.660-0.740)    n=3
+       1e-5      0.440 (0.411-0.500)    0.440 (0.380-0.500)    n=3
+       best lr=1e-6 at 0.685 | grid of 3 points
+
+MpSub  delta0    test acc               dev acc               
+       1e-1      0.690 (0.679-0.714)    0.787 (0.760-0.820)    n=3
+       best delta0=1e-1 at 0.690 | grid of 1 points
+
+default-radius MpSub  0.690   (1 configuration, 8400 passes)
+tuned MeZO            0.685   (3 configurations, 25200 passes)
+difference            +0.006
+search-cost ratio     3x
+criterion (>= -0.02)  met
+

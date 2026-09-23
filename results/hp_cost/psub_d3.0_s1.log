@@ -1,0 +1,404 @@
+/root/miniconda3/envs/psub/lib/python3.11/site-packages/accelerate/utils/torch_xla.py:18: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+OurArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=True,
+do_predict=False,
+do_train=False,
+eos_token=<EOS_TOKEN>,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=25,
+evaluation_strategy=IntervalStrategy.STEPS,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'fsdp_min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+head_tuning=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+icl_sfc=False,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0,
+length_column_name=length,
+linear_probing=False,
+load_best_model_at_end=False,
+load_bfloat16=False,
+load_float16=False,
+load_int8=False,
+local_rank=-1,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=result/hp_cost/ps_3.0_1/runs/Aug15_06-04-33_autodl-container-rm7b48awdf-ab5c269c,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=5,
+logging_strategy=IntervalStrategy.STEPS,
+lora=False,
+lora_alpha=16,
+lora_r=8,
+lp_early_stopping=False,
+lr_scheduler_type=SchedulerType.CONSTANT,
+max_grad_norm=1.0,
+max_length=2048,
+max_new_tokens=50,
+max_steps=200,
+metric_for_best_model=None,
+model_name=facebook/opt-125m,
+model_path=/root/autodl-tmp/opt-125m,
+mp_parameters=,
+no_auto_device=False,
+no_cuda=False,
+no_eval=False,
+no_reparam=True,
+non_diff=False,
+num_beams=1,
+num_dev=50,
+num_eval=100,
+num_prefix=5,
+num_train=100,
+num_train_epochs=3.0,
+num_train_sets=None,
+only_train_option=True,
+optim=OptimizerNames.ADAMW_HF,
+optim_args=None,
+output_dir=result/hp_cost/ps_3.0_1,
+overwrite_output_dir=False,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=8,
+prediction_loss_only=False,
+prefix_init_by_real_act=True,
+prefix_tuning=False,
+psub_delta0=3.0,
+psub_dmax=None,
+psub_eta=0.1,
+psub_kind=grad,
+psub_nsteps=1,
+psub_ortho=True,
+psub_p=20,
+psub_stream=True,
+psub_use_torch=True,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+rank_r=2,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+result_file=None,
+resume_from_checkpoint=None,
+run_name=result/hp_cost/ps_3.0_1,
+sampling=False,
+save_model=False,
+save_on_each_node=False,
+save_on_interrupt=False,
+save_safetensors=False,
+save_steps=500,
+save_strategy=IntervalStrategy.NO,
+save_total_limit=None,
+seed=42,
+sfc=False,
+sharded_ddp=[],
+skip_memory_metrics=True,
+step_interval=50,
+tag=hpc_ps_3.0_1,
+task_name=CB,
+temperature=1.0,
+tf32=None,
+top_k=None,
+top_p=0.95,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+train_as_classification=True,
+train_set_seed=1,
+trainer=LOZO,
+untie_emb=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+use_psub=True,
+verbose=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+zo_eps=0.001,
+)
+2026-08-15 06:04:34,989 - WARNING - Found cached dataset parquet (/root/autodl-tmp/hf_cache/datasets/parquet/default-b1238a307bd95c8a/0.0.0/14a00e99c0d15a23649d0db8944380ac81082d4b021f398733dd84f3a6c569a7)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 1214.33it/s]
+2026-08-15 06:04:35,000 - INFO - Sample train set 150/250
+2026-08-15 06:04:35,000 - INFO - ... including dev set 50 samples
+2026-08-15 06:04:35,000 - INFO - Loading model with FP32...
+2026-08-15 06:04:35,860 - INFO - Done with 0.86s
+2026-08-15 06:04:35,914 - INFO - Tokenizing training samples...
+2026-08-15 06:04:36,219 - INFO - Done with 0.31s
+/root/miniconda3/envs/psub/lib/python3.11/site-packages/transformers/optimization.py:391: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+2026-08-15 06:04:36,223 - INFO - ***** Running training *****
+2026-08-15 06:04:36,223 - INFO -   Num examples = 100
+2026-08-15 06:04:36,224 - INFO -   Num Epochs = 16
+2026-08-15 06:04:36,224 - INFO -   Instantaneous batch size per device = 8
+2026-08-15 06:04:36,224 - INFO -   Total train batch size (w. parallel, distributed & accumulation) = 8
+2026-08-15 06:04:36,224 - INFO -   Gradient Accumulation steps = 1
+2026-08-15 06:04:36,224 - INFO -   Total optimization steps = 200
+2026-08-15 06:04:36,224 - INFO -   Number of trainable parameters = 125239296
+  0%|          | 0/200 [00:00<?, ?it/s][psub] per-param step 2.681e-04, dtype=torch.float32 (精度充裕)
+  0%|          | 1/200 [00:02<09:24,  2.84s/it]  1%|          | 2/200 [00:05<09:31,  2.89s/it]  2%|▏         | 3/200 [00:07<08:10,  2.49s/it]  2%|▏         | 4/200 [00:11<09:40,  2.96s/it]  2%|▎         | 5/200 [00:14<09:55,  3.05s/it]                                               {'loss': 0.8283, 'learning_rate': 0.0, 'epoch': 0.38}
+  2%|▎         | 5/200 [00:14<09:55,  3.05s/it]  3%|▎         | 6/200 [00:18<10:54,  3.37s/it]  4%|▎         | 7/200 [00:27<16:36,  5.16s/it]  4%|▍         | 8/200 [00:38<21:59,  6.87s/it]  4%|▍         | 9/200 [00:47<24:03,  7.56s/it]  5%|▌         | 10/200 [00:56<25:28,  8.04s/it]                                                {'loss': 0.8325, 'learning_rate': 0.0, 'epoch': 0.77}
+  5%|▌         | 10/200 [00:56<25:28,  8.04s/it]  6%|▌         | 11/200 [01:06<27:27,  8.72s/it]  6%|▌         | 12/200 [01:16<28:05,  8.96s/it]  6%|▋         | 13/200 [01:20<24:07,  7.74s/it]  7%|▋         | 14/200 [01:31<26:47,  8.64s/it]  8%|▊         | 15/200 [01:42<28:48,  9.34s/it]                                                {'loss': 0.5948, 'learning_rate': 0.0, 'epoch': 1.15}
+  8%|▊         | 15/200 [01:42<28:48,  9.34s/it]  8%|▊         | 16/200 [01:50<27:07,  8.85s/it]  8%|▊         | 17/200 [02:01<28:49,  9.45s/it]  9%|▉         | 18/200 [02:10<28:43,  9.47s/it] 10%|▉         | 19/200 [02:18<26:36,  8.82s/it] 10%|█         | 20/200 [02:26<26:10,  8.72s/it]                                                {'loss': 0.672, 'learning_rate': 0.0, 'epoch': 1.54}
+ 10%|█         | 20/200 [02:26<26:10,  8.72s/it] 10%|█         | 21/200 [02:35<25:55,  8.69s/it] 11%|█         | 22/200 [02:48<30:04, 10.14s/it] 12%|█▏        | 23/200 [02:58<29:59, 10.17s/it] 12%|█▏        | 24/200 [03:11<31:35, 10.77s/it] 12%|█▎        | 25/200 [03:21<30:57, 10.62s/it]                                                {'loss': 0.8532, 'learning_rate': 0.0, 'epoch': 1.92}
+ 12%|█▎        | 25/200 [03:21<30:57, 10.62s/it]
+  0%|          | 0/7 [00:00<?, ?it/s][A
+ 29%|██▊       | 2/7 [00:00<00:00, 11.97it/s][A
+ 57%|█████▋    | 4/7 [00:00<00:00,  7.21it/s][A
+ 71%|███████▏  | 5/7 [00:00<00:00,  6.80it/s][A
+ 86%|████████▌ | 6/7 [00:00<00:00,  5.99it/s][A                                                
+                                             [A{'eval_loss': 0.9821043610572815, 'eval_runtime': 1.1883, 'eval_samples_per_second': 42.077, 'eval_steps_per_second': 5.891, 'epoch': 1.92}
+ 12%|█▎        | 25/200 [03:22<30:57, 10.62s/it]
+100%|██████████| 7/7 [00:00<00:00,  5.99it/s][A
+                                             [A 13%|█▎        | 26/200 [03:27<26:54,  9.28s/it] 14%|█▎        | 27/200 [03:34<24:45,  8.59s/it] 14%|█▍        | 28/200 [03:45<26:58,  9.41s/it] 14%|█▍        | 29/200 [03:56<27:58,  9.81s/it] 15%|█▌        | 30/200 [04:08<29:26, 10.39s/it]                                                {'loss': 0.7413, 'learning_rate': 0.0, 'epoch': 2.31}
+ 15%|█▌        | 30/200 [04:08<29:26, 10.39s/it] 16%|█▌        | 31/200 [04:18<29:27, 10.46s/it] 16%|█▌        | 32/200 [04:29<29:12, 10.43s/it] 16%|█▋        | 33/200 [04:37<27:17,  9.81s/it] 17%|█▋        | 34/200 [04:48<27:54, 10.09s/it] 18%|█▊        | 35/200 [04:57<26:44,  9.72s/it]                                                {'loss': 0.6493, 'learning_rate': 0.0, 'epoch': 2.69}
+ 18%|█▊        | 35/200 [04:57<26:44,  9.72s/it] 18%|█▊        | 36/200 [05:07<27:11,  9.95s/it] 18%|█▊        | 37/200 [05:18<27:21, 10.07s/it] 19%|█▉        | 38/200 [05:31<29:56, 11.09s/it] 20%|█▉        | 39/200 [05:37<25:49,  9.62s/it] 20%|██        | 40/200 [05:47<25:57,  9.74s/it]                                                {'loss': 0.8731, 'learning_rate': 0.0, 'epoch': 3.08}
+ 20%|██        | 40/200 [05:47<25:57,  9.74s/it] 20%|██        | 41/200 [05:55<24:27,  9.23s/it] 21%|██        | 42/200 [06:07<25:56,  9.85s/it] 22%|██▏       | 43/200 [06:16<25:19,  9.68s/it] 22%|██▏       | 44/200 [06:25<24:59,  9.61s/it] 22%|██▎       | 45/200 [06:35<25:07,  9.73s/it]                                                {'loss': 0.9269, 'learning_rate': 0.0, 'epoch': 3.46}
+ 22%|██▎       | 45/200 [06:35<25:07,  9.73s/it] 23%|██▎       | 46/200 [06:44<24:27,  9.53s/it] 24%|██▎       | 47/200 [06:55<24:49,  9.73s/it] 24%|██▍       | 48/200 [07:04<24:32,  9.69s/it] 24%|██▍       | 49/200 [07:16<26:01, 10.34s/it] 25%|██▌       | 50/200 [07:29<28:09, 11.27s/it]                                                {'loss': 0.724, 'learning_rate': 0.0, 'epoch': 3.85}
+ 25%|██▌       | 50/200 [07:29<28:09, 11.27s/it]
+  0%|          | 0/7 [00:00<?, ?it/s][A
+ 29%|██▊       | 2/7 [00:00<00:00, 13.26it/s][A
+ 57%|█████▋    | 4/7 [00:00<00:00,  7.06it/s][A
+ 71%|███████▏  | 5/7 [00:00<00:00,  6.63it/s][A
+ 86%|████████▌ | 6/7 [00:00<00:00,  6.23it/s][A                                                
+                                             [A{'eval_loss': 0.9005122184753418, 'eval_runtime': 1.1443, 'eval_samples_per_second': 43.694, 'eval_steps_per_second': 6.117, 'epoch': 3.85}
+ 25%|██▌       | 50/200 [07:31<28:09, 11.27s/it]
+100%|██████████| 7/7 [00:00<00:00,  6.23it/s][A
+                                             [A 26%|██▌       | 51/200 [07:38<25:54, 10.43s/it] 26%|██▌       | 52/200 [07:44<22:35,  9.16s/it] 26%|██▋       | 53/200 [07:57<25:17, 10.32s/it] 27%|██▋       | 54/200 [08:08<25:19, 10.41s/it] 28%|██▊       | 55/200 [08:17<24:14, 10.03s/it]                                                {'loss': 0.7627, 'learning_rate': 0.0, 'epoch': 4.23}
+ 28%|██▊       | 55/200 [08:17<24:14, 10.03s/it] 28%|██▊       | 56/200 [08:27<24:01, 10.01s/it] 28%|██▊       | 57/200 [08:38<24:30, 10.28s/it] 29%|██▉       | 58/200 [08:46<22:53,  9.67s/it] 30%|██▉       | 59/200 [08:55<22:01,  9.37s/it] 30%|███       | 60/200 [09:07<24:15, 10.40s/it]                                                {'loss': 0.6851, 'learning_rate': 0.0, 'epoch': 4.62}
+ 30%|███       | 60/200 [09:08<24:15, 10.40s/it] 30%|███       | 61/200 [09:19<25:06, 10.84s/it] 31%|███       | 62/200 [09:29<23:45, 10.33s/it] 32%|███▏      | 63/200 [09:36<21:56,  9.61s/it] 32%|███▏      | 64/200 [09:46<21:26,  9.46s/it] 32%|███▎      | 65/200 [09:51<18:46,  8.34s/it]                                                {'loss': 0.6698, 'learning_rate': 0.0, 'epoch': 5.0}
+ 32%|███▎      | 65/200 [09:51<18:46,  8.34s/it] 33%|███▎      | 66/200 [09:59<18:23,  8.23s/it] 34%|███▎      | 67/200 [10:12<21:05,  9.52s/it] 34%|███▍      | 68/200 [10:24<22:37, 10.29s/it] 34%|███▍      | 69/200 [10:34<22:29, 10.30s/it] 35%|███▌      | 70/200 [10:45<22:27, 10.36s/it]                                                {'loss': 0.662, 'learning_rate': 0.0, 'epoch': 5.38}
+ 35%|███▌      | 70/200 [10:45<22:27, 10.36s/it] 36%|███▌      | 71/200 [10:53<20:54,  9.73s/it] 36%|███▌      | 72/200 [11:03<20:47,  9.75s/it] 36%|███▋      | 73/200 [11:11<19:56,  9.42s/it] 37%|███▋      | 74/200 [11:21<19:57,  9.50s/it] 38%|███▊      | 75/200 [11:31<20:04,  9.64s/it]                                                {'loss': 0.8685, 'learning_rate': 0.0, 'epoch': 5.77}
+ 38%|███▊      | 75/200 [11:31<20:04,  9.64s/it]
+  0%|          | 0/7 [00:00<?, ?it/s][A
+ 29%|██▊       | 2/7 [00:00<00:00, 10.95it/s][A
+ 57%|█████▋    | 4/7 [00:00<00:00,  6.23it/s][A
+ 71%|███████▏  | 5/7 [00:00<00:00,  6.07it/s][A
+ 86%|████████▌ | 6/7 [00:00<00:00,  5.74it/s][A                                                
+                                             [A{'eval_loss': 0.9668474793434143, 'eval_runtime': 1.2779, 'eval_samples_per_second': 39.126, 'eval_steps_per_second': 5.478, 'epoch': 5.77}
+ 38%|███▊      | 75/200 [11:32<20:04,  9.64s/it]
+100%|██████████| 7/7 [00:01<00:00,  5.74it/s][A
+                                             [A 38%|███▊      | 76/200 [11:42<20:44, 10.04s/it] 38%|███▊      | 77/200 [11:53<21:08, 10.31s/it] 39%|███▉      | 78/200 [11:58<17:48,  8.76s/it] 40%|███▉      | 79/200 [12:08<18:23,  9.12s/it] 40%|████      | 80/200 [12:16<17:31,  8.76s/it]                                                {'loss': 0.9951, 'learning_rate': 0.0, 'epoch': 6.15}
+ 40%|████      | 80/200 [12:16<17:31,  8.76s/it] 40%|████      | 81/200 [12:25<17:33,  8.85s/it] 41%|████      | 82/200 [12:36<18:33,  9.44s/it] 42%|████▏     | 83/200 [12:45<18:05,  9.27s/it] 42%|████▏     | 84/200 [12:54<17:52,  9.24s/it] 42%|████▎     | 85/200 [13:03<17:53,  9.34s/it]                                                {'loss': 0.8649, 'learning_rate': 0.0, 'epoch': 6.54}
+ 42%|████▎     | 85/200 [13:03<17:53,  9.34s/it] 43%|████▎     | 86/200 [13:17<20:22, 10.73s/it] 44%|████▎     | 87/200 [13:27<19:24, 10.31s/it] 44%|████▍     | 88/200 [13:36<18:52, 10.11s/it] 44%|████▍     | 89/200 [13:45<17:47,  9.62s/it] 45%|████▌     | 90/200 [13:57<18:51, 10.29s/it]                                                {'loss': 0.6919, 'learning_rate': 0.0, 'epoch': 6.92}
+ 45%|████▌     | 90/200 [13:57<18:51, 10.29s/it] 46%|████▌     | 91/200 [14:04<17:05,  9.41s/it] 46%|████▌     | 92/200 [14:12<15:54,  8.83s/it] 46%|████▋     | 93/200 [14:20<15:32,  8.71s/it] 47%|████▋     | 94/200 [14:32<17:19,  9.80s/it] 48%|████▊     | 95/200 [14:41<16:32,  9.46s/it]                                                {'loss': 1.0238, 'learning_rate': 0.0, 'epoch': 7.31}
+ 48%|████▊     | 95/200 [14:41<16:32,  9.46s/it] 48%|████▊     | 96/200 [14:52<17:11,  9.92s/it] 48%|████▊     | 97/200 [15:01<16:36,  9.67s/it] 49%|████▉     | 98/200 [15:12<17:03, 10.03s/it] 50%|████▉     | 99/200 [15:21<16:13,  9.63s/it] 50%|█████     | 100/200 [15:30<15:49,  9.50s/it]                                                 {'loss': 0.8627, 'learning_rate': 0.0, 'epoch': 7.69}
+ 50%|█████     | 100/200 [15:30<15:49,  9.50s/it]
+  0%|          | 0/7 [00:00<?, ?it/s][A
+ 29%|██▊       | 2/7 [00:00<00:00, 13.44it/s][A
+ 57%|█████▋    | 4/7 [00:00<00:00,  6.68it/s][A
+ 71%|███████▏  | 5/7 [00:00<00:00,  6.53it/s][A
+ 86%|████████▌ | 6/7 [00:00<00:00,  6.60it/s][A                                                 
+                                             [A{'eval_loss': 0.8922111392021179, 'eval_runtime': 1.1153, 'eval_samples_per_second': 44.832, 'eval_steps_per_second': 6.276, 'epoch': 7.69}
+ 50%|█████     | 100/200 [15:31<15:49,  9.50s/it]
+100%|██████████| 7/7 [00:00<00:00,  6.60it/s][A
+                                             [A 50%|█████     | 101/200 [15:42<17:11, 10.41s/it] 51%|█████     | 102/200 [15:55<18:17, 11.20s/it] 52%|█████▏    | 103/200 [16:04<16:58, 10.50s/it] 52%|█████▏    | 104/200 [16:10<14:33,  9.10s/it] 52%|█████▎    | 105/200 [16:20<14:58,  9.46s/it]                                                 {'loss': 0.6271, 'learning_rate': 0.0, 'epoch': 8.08}
+ 52%|█████▎    | 105/200 [16:20<14:58,  9.46s/it] 53%|█████▎    | 106/200 [16:31<15:32,  9.92s/it] 54%|█████▎    | 107/200 [16:43<16:07, 10.40s/it] 54%|█████▍    | 108/200 [16:53<15:47, 10.30s/it] 55%|█████▍    | 109/200 [17:04<15:52, 10.47s/it] 55%|█████▌    | 110/200 [17:13<15:01, 10.02s/it]                                                 {'loss': 0.7048, 'learning_rate': 0.0, 'epoch': 8.46}
+ 55%|█████▌    | 110/200 [17:13<15:01, 10.02s/it] 56%|█████▌    | 111/200 [17:22<14:28,  9.76s/it] 56%|█████▌    | 112/200 [17:30<13:31,  9.22s/it] 56%|█████▋    | 113/200 [17:40<13:45,  9.49s/it] 57%|█████▋    | 114/200 [17:51<14:10,  9.89s/it] 57%|█████▊    | 115/200 [18:04<15:15, 10.77s/it]                                                 {'loss': 0.7497, 'learning_rate': 0.0, 'epoch': 8.85}
+ 57%|█████▊    | 115/200 [18:04<15:15, 10.77s/it] 58%|█████▊    | 116/200 [18:12<14:00, 10.01s/it] 58%|█████▊    | 117/200 [18:18<12:11,  8.81s/it] 59%|█████▉    | 118/200 [18:26<11:52,  8.69s/it] 60%|█████▉    | 119/200 [18:36<12:07,  8.98s/it] 60%|██████    | 120/200 [18:45<12:01,  9.01s/it]                                                 {'loss': 0.7557, 'learning_rate': 0.0, 'epoch': 9.23}
+ 60%|██████    | 120/200 [18:45<12:01,  9.01s/it] 60%|██████    | 121/200 [18:55<12:00,  9.12s/it] 61%|██████    | 122/200 [19:08<13:40, 10.53s/it] 62%|██████▏   | 123/200 [19:16<12:26,  9.69s/it] 62%|██████▏   | 124/200 [19:27<12:45, 10.07s/it] 62%|██████▎   | 125/200 [19:37<12:40, 10.14s/it]                                                 {'loss': 0.7253, 'learning_rate': 0.0, 'epoch': 9.62}
+ 62%|██████▎   | 125/200 [19:37<12:40, 10.14s/it]
+  0%|          | 0/7 [00:00<?, ?it/s][A
+ 29%|██▊       | 2/7 [00:00<00:00, 13.15it/s][A
+ 57%|█████▋    | 4/7 [00:00<00:00,  6.76it/s][A
+ 71%|███████▏  | 5/7 [00:00<00:00,  6.49it/s][A
+ 86%|████████▌ | 6/7 [00:00<00:00,  6.26it/s][A                                                 
+                                             [A{'eval_loss': 0.8595289587974548, 'eval_runtime': 1.2342, 'eval_samples_per_second': 40.512, 'eval_steps_per_second': 5.672, 'epoch': 9.62}
+ 62%|██████▎   | 125/200 [19:39<12:40, 10.14s/it]
+100%|██████████| 7/7 [00:00<00:00,  6.26it/s][A
+                                             [A 63%|██████▎   | 126/200 [19:48<12:50, 10.42s/it] 64%|██████▎   | 127/200 [19:58<12:22, 10.17s/it] 64%|██████▍   | 128/200 [20:09<12:24, 10.35s/it] 64%|██████▍   | 129/200 [20:18<11:49,  9.99s/it] 65%|██████▌   | 130/200 [20:25<10:46,  9.24s/it]                                                 {'loss': 0.7118, 'learning_rate': 0.0, 'epoch': 10.0}
+ 65%|██████▌   | 130/200 [20:25<10:46,  9.24s/it] 66%|██████▌   | 131/200 [20:37<11:19,  9.85s/it] 66%|██████▌   | 132/200 [20:45<10:35,  9.35s/it] 66%|██████▋   | 133/200 [20:55<10:48,  9.67s/it] 67%|██████▋   | 134/200 [21:04<10:26,  9.49s/it] 68%|██████▊   | 135/200 [21:17<11:27, 10.58s/it]                                                 {'loss': 0.9201, 'learning_rate': 0.0, 'epoch': 10.38}
+ 68%|██████▊   | 135/200 [21:17<11:27, 10.58s/it] 68%|██████▊   | 136/200 [21:28<11:07, 10.42s/it] 68%|██████▊   | 137/200 [21:36<10:23,  9.89s/it] 69%|██████▉   | 138/200 [21:47<10:37, 10.28s/it] 70%|██████▉   | 139/200 [21:58<10:30, 10.33s/it] 70%|███████   | 140/200 [22:07<09:51,  9.85s/it]                                                 {'loss': 0.8192, 'learning_rate': 0.0, 'epoch': 10.77}
+ 70%|███████   | 140/200 [22:07<09:51,  9.85s/it] 70%|███████   | 141/200 [22:16<09:32,  9.71s/it] 71%|███████   | 142/200 [22:26<09:35,  9.92s/it] 72%|███████▏  | 143/200 [22:32<08:18,  8.74s/it] 72%|███████▏  | 144/200 [22:42<08:21,  8.96s/it] 72%|███████▎  | 145/200 [22:53<08:43,  9.52s/it]                                                 {'loss': 0.8019, 'learning_rate': 0.0, 'epoch': 11.15}
+ 72%|███████▎  | 145/200 [22:53<08:43,  9.52s/it] 73%|███████▎  | 146/200 [23:01<08:22,  9.30s/it] 74%|███████▎  | 147/200 [23:10<08:06,  9.18s/it] 74%|███████▍  | 148/200 [23:22<08:34,  9.90s/it] 74%|███████▍  | 149/200 [23:31<08:12,  9.66s/it] 75%|███████▌  | 150/200 [23:42<08:23, 10.06s/it]                                                 {'loss': 0.7669, 'learning_rate': 0.0, 'epoch': 11.54}
+ 75%|███████▌  | 150/200 [23:42<08:23, 10.06s/it]
+  0%|          | 0/7 [00:00<?, ?it/s][A
+ 29%|██▊       | 2/7 [00:00<00:00, 11.30it/s][A
+ 57%|█████▋    | 4/7 [00:00<00:00,  6.46it/s][A
+ 71%|███████▏  | 5/7 [00:00<00:00,  5.34it/s][A
+ 86%|████████▌ | 6/7 [00:01<00:00,  5.16it/s][A                                                 
+                                             [A{'eval_loss': 1.0301620960235596, 'eval_runtime': 1.3462, 'eval_samples_per_second': 37.142, 'eval_steps_per_second': 5.2, 'epoch': 11.54}
+ 75%|███████▌  | 150/200 [23:43<08:23, 10.06s/it]
+100%|██████████| 7/7 [00:01<00:00,  5.16it/s][A
+                                             [A 76%|███████▌  | 151/200 [23:51<08:03,  9.87s/it] 76%|███████▌  | 152/200 [24:00<07:36,  9.50s/it] 76%|███████▋  | 153/200 [24:12<07:59, 10.20s/it] 77%|███████▋  | 154/200 [24:22<07:50, 10.24s/it] 78%|███████▊  | 155/200 [24:33<07:43, 10.30s/it]                                                 {'loss': 0.8126, 'learning_rate': 0.0, 'epoch': 11.92}
+ 78%|███████▊  | 155/200 [24:33<07:43, 10.30s/it] 78%|███████▊  | 156/200 [24:40<06:54,  9.42s/it] 78%|███████▊  | 157/200 [24:48<06:32,  9.13s/it] 79%|███████▉  | 158/200 [24:59<06:42,  9.58s/it] 80%|███████▉  | 159/200 [25:10<06:47,  9.95s/it] 80%|████████  | 160/200 [25:20<06:39,  9.99s/it]                                                 {'loss': 0.6394, 'learning_rate': 0.0, 'epoch': 12.31}
+ 80%|████████  | 160/200 [25:20<06:39,  9.99s/it] 80%|████████  | 161/200 [25:31<06:38, 10.22s/it] 81%|████████  | 162/200 [25:40<06:18,  9.96s/it] 82%|████████▏ | 163/200 [25:49<05:51,  9.51s/it] 82%|████████▏ | 164/200 [26:02<06:24, 10.67s/it] 82%|████████▎ | 165/200 [26:11<06:01, 10.33s/it]                                                 {'loss': 0.8777, 'learning_rate': 0.0, 'epoch': 12.69}
+ 82%|████████▎ | 165/200 [26:11<06:01, 10.33s/it] 83%|████████▎ | 166/200 [26:21<05:45, 10.18s/it] 84%|████████▎ | 167/200 [26:31<05:29, 10.00s/it] 84%|████████▍ | 168/200 [26:43<05:35, 10.49s/it] 84%|████████▍ | 169/200 [26:48<04:39,  9.02s/it] 85%|████████▌ | 170/200 [27:01<05:07, 10.26s/it]                                                 {'loss': 0.6576, 'learning_rate': 0.0, 'epoch': 13.08}
+ 85%|████████▌ | 170/200 [27:01<05:07, 10.26s/it] 86%|████████▌ | 171/200 [27:11<04:50, 10.03s/it] 86%|████████▌ | 172/200 [27:20<04:35,  9.84s/it] 86%|████████▋ | 173/200 [27:30<04:24,  9.79s/it] 87%|████████▋ | 174/200 [27:41<04:22, 10.11s/it] 88%|████████▊ | 175/200 [27:49<04:00,  9.63s/it]                                                 {'loss': 0.636, 'learning_rate': 0.0, 'epoch': 13.46}
+ 88%|████████▊ | 175/200 [27:49<04:00,  9.63s/it]
+  0%|          | 0/7 [00:00<?, ?it/s][A
+ 29%|██▊       | 2/7 [00:00<00:00, 12.61it/s][A
+ 57%|█████▋    | 4/7 [00:00<00:00,  7.27it/s][A
+ 71%|███████▏  | 5/7 [00:00<00:00,  6.64it/s][A
+ 86%|████████▌ | 6/7 [00:00<00:00,  5.48it/s][A                                                 
+                                             [A{'eval_loss': 0.8841556310653687, 'eval_runtime': 1.2096, 'eval_samples_per_second': 41.335, 'eval_steps_per_second': 5.787, 'epoch': 13.46}
+ 88%|████████▊ | 175/200 [27:50<04:00,  9.63s/it]
+100%|██████████| 7/7 [00:00<00:00,  5.48it/s][A
+                                             [A 88%|████████▊ | 176/200 [28:01<04:03, 10.14s/it] 88%|████████▊ | 177/200 [28:11<03:54, 10.19s/it] 89%|████████▉ | 178/200 [28:21<03:43, 10.16s/it] 90%|████████▉ | 179/200 [28:32<03:42, 10.58s/it] 90%|█████████ | 180/200 [28:44<03:34, 10.74s/it]                                                 {'loss': 0.7469, 'learning_rate': 0.0, 'epoch': 13.85}
+ 90%|█████████ | 180/200 [28:44<03:34, 10.74s/it] 90%|█████████ | 181/200 [28:52<03:12, 10.13s/it] 91%|█████████ | 182/200 [28:59<02:43,  9.10s/it] 92%|█████████▏| 183/200 [29:11<02:50, 10.05s/it] 92%|█████████▏| 184/200 [29:23<02:46, 10.43s/it] 92%|█████████▎| 185/200 [29:33<02:35, 10.37s/it]                                                 {'loss': 0.6826, 'learning_rate': 0.0, 'epoch': 14.23}
+ 92%|█████████▎| 185/200 [29:33<02:35, 10.37s/it] 93%|█████████▎| 186/200 [29:41<02:17,  9.83s/it] 94%|█████████▎| 187/200 [29:52<02:09,  9.93s/it] 94%|█████████▍| 188/200 [30:00<01:54,  9.57s/it] 94%|█████████▍| 189/200 [30:11<01:48,  9.82s/it] 95%|█████████▌| 190/200 [30:20<01:37,  9.73s/it]                                                 {'loss': 0.784, 'learning_rate': 0.0, 'epoch': 14.62}
+ 95%|█████████▌| 190/200 [30:20<01:37,  9.73s/it] 96%|█████████▌| 191/200 [30:30<01:26,  9.65s/it] 96%|█████████▌| 192/200 [30:40<01:18,  9.81s/it] 96%|█████████▋| 193/200 [30:51<01:11, 10.24s/it] 97%|█████████▋| 194/200 [31:00<00:59,  9.95s/it] 98%|█████████▊| 195/200 [31:05<00:41,  8.27s/it]                                                 {'loss': 0.6716, 'learning_rate': 0.0, 'epoch': 15.0}
+ 98%|█████████▊| 195/200 [31:05<00:41,  8.27s/it] 98%|█████████▊| 196/200 [31:10<00:29,  7.37s/it] 98%|█████████▊| 197/200 [31:17<00:21,  7.14s/it] 99%|█████████▉| 198/200 [31:24<00:14,  7.31s/it]100%|█████████▉| 199/200 [31:30<00:06,  6.80s/it]100%|██████████| 200/200 [31:36<00:00,  6.54s/it]                                                 {'loss': 0.6768, 'learning_rate': 0.0, 'epoch': 15.38}
+100%|██████████| 200/200 [31:36<00:00,  6.54s/it]
+  0%|          | 0/7 [00:00<?, ?it/s][A
+ 71%|███████▏  | 5/7 [00:00<00:00, 41.73it/s][A                                                 
+                                             [A{'eval_loss': 0.8300486207008362, 'eval_runtime': 0.2049, 'eval_samples_per_second': 243.991, 'eval_steps_per_second': 34.159, 'epoch': 15.38}
+100%|██████████| 200/200 [31:36<00:00,  6.54s/it]
+100%|██████████| 7/7 [00:00<00:00, 41.73it/s][A
+                                             [A2026-08-15 06:36:12,770 - INFO - 
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+                                                 {'train_runtime': 1896.5461, 'train_samples_per_second': 0.844, 'train_steps_per_second': 0.105, 'train_loss': 0.7637404787540436, 'epoch': 15.38}
+100%|██████████| 200/200 [31:36<00:00,  6.54s/it]100%|██████████| 200/200 [31:36<00:00,  9.48s/it]
+2026-08-15 06:36:12,772 - INFO - There are 0 training samples and 56 validation samples
+  0%|          | 0/56 [00:00<?, ?it/s]2026-08-15 06:36:12,772 - INFO - ========= Example =========
+2026-08-15 06:36:12,773 - INFO - Candidate: [0, 1, 2]
+2026-08-15 06:36:12,773 - INFO - Correct candidate: 1
+2026-08-15 06:36:12,789 - INFO - === Candidate 0 ===
+2026-08-15 06:36:12,789 - INFO - <s>Suppose And I resent what happened to my flat. A couple of guys think they can stake it out and wait for me, rub their filthy fingers on my clothes, piss in my bathroom, and I'm supposed to ignore it. I know what I said about possessions being like leeches but that don't mean I 'll surrender them to a pair of punks. Can we infer that "he will surrender his possessions to a pair of punks"? Yes, No, or Maybe?
+Yes
+2026-08-15 06:36:12,790 - INFO - Log probabilities of the option tokens: tensor([-10.2528])
+2026-08-15 06:36:12,795 - INFO - === Candidate 1 (without context)===
+2026-08-15 06:36:12,795 - INFO - <s>Suppose And I resent what happened to my flat. A couple of guys think they can stake it out and wait for me, rub their filthy fingers on my clothes, piss in my bathroom, and I'm supposed to ignore it. I know what I said about possessions being like leeches but that don't mean I 'll surrender them to a pair of punks. Can we infer that "he will surrender his possessions to a pair of punks"? Yes, No, or Maybe?
+No
+2026-08-15 06:36:12,795 - INFO - Log probabilities of the option tokens: tensor([-10.9810])
+2026-08-15 06:36:12,801 - INFO - === Candidate 2 (without context)===
+2026-08-15 06:36:12,801 - INFO - <s>Suppose And I resent what happened to my flat. A couple of guys think they can stake it out and wait for me, rub their filthy fingers on my clothes, piss in my bathroom, and I'm supposed to ignore it. I know what I said about possessions being like leeches but that don't mean I 'll surrender them to a pair of punks. Can we infer that "he will surrender his possessions to a pair of punks"? Yes, No, or Maybe?
+Maybe
+2026-08-15 06:36:12,801 - INFO - Log probabilities of the option tokens: tensor([-12.7871])
+2026-08-15 06:36:12,801 - INFO - Prediction scores: [-10.252762794494629, -10.980977058410645, -12.787120819091797]
+2026-08-15 06:36:12,801 - INFO - ========= Example =========
+2026-08-15 06:36:12,801 - INFO - Candidate: [0, 1, 2]
+2026-08-15 06:36:12,801 - INFO - Correct candidate: 0
+2026-08-15 06:36:12,811 - INFO - === Candidate 0 ===
+2026-08-15 06:36:12,811 - INFO - <s>Suppose ``But my father always taught me never to be afraid of pointing out the obvious. I'm sure you have noticed the implication of the letter, that the writer has in fact observed Jenny undressing for bed?'' I just wondered if you also knew as I'm sure you do that her bedroom's at the rear of the house? Can we infer that "Jenny's bedroom's at the rear of the house"? Yes, No, or Maybe?
+Yes
+2026-08-15 06:36:12,811 - INFO - Log probabilities of the option tokens: tensor([-10.1825])
+2026-08-15 06:36:12,817 - INFO - === Candidate 1 (without context)===
+2026-08-15 06:36:12,817 - INFO - <s>Suppose ``But my father always taught me never to be afraid of pointing out the obvious. I'm sure you have noticed the implication of the letter, that the writer has in fact observed Jenny undressing for bed?'' I just wondered if you also knew as I'm sure you do that her bedroom's at the rear of the house? Can we infer that "Jenny's bedroom's at the rear of the house"? Yes, No, or Maybe?
+No
+2026-08-15 06:36:12,817 - INFO - Log probabilities of the option tokens: tensor([-11.2903])
+2026-08-15 06:36:12,822 - INFO - === Candidate 2 (without context)===
+2026-08-15 06:36:12,823 - INFO - <s>Suppose ``But my father always taught me never to be afraid of pointing out the obvious. I'm sure you have noticed the implication of the letter, that the writer has in fact observed Jenny undressing for bed?'' I just wondered if you also knew as I'm sure you do that her bedroom's at the rear of the house? Can we infer that "Jenny's bedroom's at the rear of the house"? Yes, No, or Maybe?
+Maybe
+2026-08-15 06:36:12,823 - INFO - Log probabilities of the option tokens: tensor([-12.8984])
+2026-08-15 06:36:12,823 - INFO - Prediction scores: [-10.182530403137207, -11.290307998657227, -12.898367881774902]
+2026-08-15 06:36:12,823 - INFO - ========= Example =========
+2026-08-15 06:36:12,823 - INFO - Candidate: [0, 1, 2]
+2026-08-15 06:36:12,823 - INFO - Correct candidate: 1
+2026-08-15 06:36:12,831 - INFO - === Candidate 0 ===
+2026-08-15 06:36:12,832 - INFO - <s>Suppose Modify the arachnids, said the researchers. Change their bodies and conditions, and you could get fibres like glass, still monofilament, but with logarithmic progressions of possibilities of strength and flexibility, and the ability to resonate light-particles or sound-waves undistorted, scarcely weakened over thousands of miles. Who said the arachnids had to be totally organic? Can we infer that "arachnids had to be totally organic"? Yes, No, or Maybe?
+Yes
+2026-08-15 06:36:12,832 - INFO - Log probabilities of the option tokens: tensor([-8.6448])
+2026-08-15 06:36:12,837 - INFO - === Candidate 1 (without context)===
+2026-08-15 06:36:12,837 - INFO - <s>Suppose Modify the arachnids, said the researchers. Change their bodies and conditions, and you could get fibres like glass, still monofilament, but with logarithmic progressions of possibilities of strength and flexibility, and the ability to resonate light-particles or sound-waves undistorted, scarcely weakened over thousands of miles. Who said the arachnids had to be totally organic? Can we infer that "arachnids had to be totally organic"? Yes, No, or Maybe?
+No
+2026-08-15 06:36:12,837 - INFO - Log probabilities of the option tokens: tensor([-9.9650])
+2026-08-15 06:36:12,843 - INFO - === Candidate 2 (without context)===
+2026-08-15 06:36:12,843 - INFO - <s>Suppose Modify the arachnids, said the researchers. Change their bodies and conditions, and you could get fibres like glass, still monofilament, but with logarithmic progressions of possibilities of strength and flexibility, and the ability to resonate light-particles or sound-waves undistorted, scarcely weakened over thousands of miles. Who said the arachnids had to be totally organic? Can we infer that "arachnids had to be totally organic"? Yes, No, or Maybe?
+Maybe
+2026-08-15 06:36:12,843 - INFO - Log probabilities of the option tokens: tensor([-12.6345])
+2026-08-15 06:36:12,843 - INFO - Prediction scores: [-8.644818305969238, -9.964961051940918, -12.63450813293457]
+  9%|▉         | 5/56 [00:00<00:01, 37.06it/s] 16%|█▌        | 9/56 [00:00<00:01, 30.00it/s] 23%|██▎       | 13/56 [00:00<00:01, 26.41it/s] 29%|██▊       | 16/56 [00:00<00:01, 25.49it/s] 34%|███▍      | 19/56 [00:00<00:01, 24.07it/s] 39%|███▉      | 22/56 [00:00<00:01, 22.84it/s] 45%|████▍     | 25/56 [00:01<00:01, 22.17it/s] 50%|█████     | 28/56 [00:01<00:01, 22.24it/s] 55%|█████▌    | 31/56 [00:01<00:01, 22.85it/s] 61%|██████    | 34/56 [00:01<00:01, 21.77it/s] 66%|██████▌   | 37/56 [00:01<00:00, 21.33it/s] 71%|███████▏  | 40/56 [00:01<00:00, 21.80it/s] 77%|███████▋  | 43/56 [00:01<00:00, 21.10it/s] 82%|████████▏ | 46/56 [00:02<00:00, 21.13it/s] 88%|████████▊ | 49/56 [00:02<00:00, 21.49it/s] 93%|█████████▎| 52/56 [00:02<00:00, 21.45it/s] 98%|█████████▊| 55/56 [00:02<00:00, 20.96it/s]100%|██████████| 56/56 [00:02<00:00, 22.64it/s]
+2026-08-15 06:36:15,247 - INFO - There are 0 training samples and 50 validation samples
+  0%|          | 0/50 [00:00<?, ?it/s]2026-08-15 06:36:15,247 - INFO - ========= Example =========
+2026-08-15 06:36:15,247 - INFO - Candidate: [0, 1, 2]
+2026-08-15 06:36:15,247 - INFO - Correct candidate: 1
+2026-08-15 06:36:15,264 - INFO - === Candidate 0 ===
+2026-08-15 06:36:15,264 - INFO - <s>Suppose A: I really don't. But no, when the time comes hopefully we'll really look around before I decide on one for my parents B: Uh-huh. A: really do, because I have been raised in one, you know, so there's lot of things I know to look for. B: Yeah. A: And I don't think they'd want to go where they used to work, either you know. Can we infer that "they would want to go where they used to work"? Yes, No, or Maybe?
+Yes
+2026-08-15 06:36:15,265 - INFO - Log probabilities of the option tokens: tensor([-9.0776])
+2026-08-15 06:36:15,283 - INFO - === Candidate 1 (without context)===
+2026-08-15 06:36:15,283 - INFO - <s>Suppose A: I really don't. But no, when the time comes hopefully we'll really look around before I decide on one for my parents B: Uh-huh. A: really do, because I have been raised in one, you know, so there's lot of things I know to look for. B: Yeah. A: And I don't think they'd want to go where they used to work, either you know. Can we infer that "they would want to go where they used to work"? Yes, No, or Maybe?
+No
+2026-08-15 06:36:15,283 - INFO - Log probabilities of the option tokens: tensor([-9.7557])
+2026-08-15 06:36:15,308 - INFO - === Candidate 2 (without context)===
+2026-08-15 06:36:15,308 - INFO - <s>Suppose A: I really don't. But no, when the time comes hopefully we'll really look around before I decide on one for my parents B: Uh-huh. A: really do, because I have been raised in one, you know, so there's lot of things I know to look for. B: Yeah. A: And I don't think they'd want to go where they used to work, either you know. Can we infer that "they would want to go where they used to work"? Yes, No, or Maybe?
+Maybe
+2026-08-15 06:36:15,309 - INFO - Log probabilities of the option tokens: tensor([-12.1862])
+2026-08-15 06:36:15,309 - INFO - Prediction scores: [-9.077624320983887, -9.755660057067871, -12.186210632324219]
+2026-08-15 06:36:15,309 - INFO - ========= Example =========
+2026-08-15 06:36:15,309 - INFO - Candidate: [0, 1, 2]
+2026-08-15 06:36:15,309 - INFO - Correct candidate: 1
+2026-08-15 06:36:15,325 - INFO - === Candidate 0 ===
+2026-08-15 06:36:15,325 - INFO - <s>Suppose Why should this topic matter? You talked about everything else as you usually do. Why should I feel Maelmuire is important? Can we infer that "Maelmuire is important"? Yes, No, or Maybe?
+Yes
+2026-08-15 06:36:15,325 - INFO - Log probabilities of the option tokens: tensor([-9.7728])
+2026-08-15 06:36:15,338 - INFO - === Candidate 1 (without context)===
+2026-08-15 06:36:15,339 - INFO - <s>Suppose Why should this topic matter? You talked about everything else as you usually do. Why should I feel Maelmuire is important? Can we infer that "Maelmuire is important"? Yes, No, or Maybe?
+No
+2026-08-15 06:36:15,339 - INFO - Log probabilities of the option tokens: tensor([-10.9515])
+2026-08-15 06:36:15,348 - INFO - === Candidate 2 (without context)===
+2026-08-15 06:36:15,348 - INFO - <s>Suppose Why should this topic matter? You talked about everything else as you usually do. Why should I feel Maelmuire is important? Can we infer that "Maelmuire is important"? Yes, No, or Maybe?
+Maybe
+2026-08-15 06:36:15,348 - INFO - Log probabilities of the option tokens: tensor([-13.1048])
+2026-08-15 06:36:15,348 - INFO - Prediction scores: [-9.772760391235352, -10.951505661010742, -13.104818344116211]
+  4%|▍         | 2/50 [00:00<00:02, 19.75it/s]2026-08-15 06:36:15,348 - INFO - ========= Example =========
+2026-08-15 06:36:15,348 - INFO - Candidate: [0, 1, 2]
+2026-08-15 06:36:15,348 - INFO - Correct candidate: 0
+2026-08-15 06:36:15,358 - INFO - === Candidate 0 ===
+2026-08-15 06:36:15,359 - INFO - <s>Suppose At the heart of the universe there is cruelty. We are predators and are preyed upon, every living thing. Did you know that wasps lay their eggs in ladybirds piercing the weak spot in their armour? Can we infer that "wasps lay their eggs in ladybirds"? Yes, No, or Maybe?
+Yes
+2026-08-15 06:36:15,359 - INFO - Log probabilities of the option tokens: tensor([-9.1099])
+2026-08-15 06:36:15,374 - INFO - === Candidate 1 (without context)===
+2026-08-15 06:36:15,374 - INFO - <s>Suppose At the heart of the universe there is cruelty. We are predators and are preyed upon, every living thing. Did you know that wasps lay their eggs in ladybirds piercing the weak spot in their armour? Can we infer that "wasps lay their eggs in ladybirds"? Yes, No, or Maybe?
+No
+2026-08-15 06:36:15,374 - INFO - Log probabilities of the option tokens: tensor([-9.5656])
+2026-08-15 06:36:15,388 - INFO - === Candidate 2 (without context)===
+2026-08-15 06:36:15,388 - INFO - <s>Suppose At the heart of the universe there is cruelty. We are predators and are preyed upon, every living thing. Did you know that wasps lay their eggs in ladybirds piercing the weak spot in their armour? Can we infer that "wasps lay their eggs in ladybirds"? Yes, No, or Maybe?
+Maybe
+2026-08-15 06:36:15,388 - INFO - Log probabilities of the option tokens: tensor([-11.9103])
+2026-08-15 06:36:15,388 - INFO - Prediction scores: [-9.109943389892578, -9.565616607666016, -11.910289764404297]
+ 10%|█         | 5/50 [00:00<00:02, 21.86it/s] 16%|█▌        | 8/50 [00:00<00:02, 20.97it/s] 22%|██▏       | 11/50 [00:00<00:01, 20.71it/s] 28%|██▊       | 14/50 [00:00<00:01, 21.47it/s] 34%|███▍      | 17/50 [00:00<00:01, 21.85it/s] 40%|████      | 20/50 [00:00<00:01, 21.49it/s] 46%|████▌     | 23/50 [00:01<00:01, 21.82it/s] 52%|█████▏    | 26/50 [00:01<00:01, 21.98it/s] 58%|█████▊    | 29/50 [00:01<00:01, 20.96it/s] 64%|██████▍   | 32/50 [00:01<00:00, 21.51it/s] 70%|███████   | 35/50 [00:01<00:00, 22.38it/s] 76%|███████▌  | 38/50 [00:01<00:00, 21.48it/s] 82%|████████▏ | 41/50 [00:01<00:00, 21.15it/s] 88%|████████▊ | 44/50 [00:02<00:00, 21.73it/s] 94%|█████████▍| 47/50 [00:02<00:00, 19.72it/s]100%|██████████| 50/50 [00:02<00:00, 21.39it/s]100%|██████████| 50/50 [00:02<00:00, 21.36it/s]
+2026-08-15 06:36:17,588 - INFO - ===== Train set 1 =====
+2026-08-15 06:36:17,588 - INFO - {'accuracy': 0.42857142857142855, 'dev_accuracy': 0.58}
+{'accuracy': 0.42857142857142855, 'dev_accuracy': 0.58}
