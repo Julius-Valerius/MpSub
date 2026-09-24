@@ -56,7 +56,7 @@
 \maketitle
 
 \begin{abstract}
-Full-parameter fine-tuning of large language models has a substantial memory cost because backpropagation requires storing activations and gradients. Zeroth-order optimization avoids that by estimating update directions from loss evaluations, but existing methods often depend on a learning rate that must be retuned for each model and task. We propose the momentum $p$-dimensional subspace trust-region method (\texttt{MpSub}). At each iteration, \texttt{MpSub} searches within a $p$-dimensional subspace: one direction preserves the historical information carried by the most recent accepted step, while the remaining directions promote exploration through fresh random sampling. The subspace gradient is estimated by central differences, a trial step is computed from a linear trust-region model, and the trust-region radius is updated according to the agreement between predicted and observed loss reduction. The radius controls both the finite-difference perturbation and the trust-region bound on the subspace step, so no learning rate is required. In the LLM setting, all evaluations within an iteration share one minibatch, and the directions are regenerated on the fly and applied in place, so training uses forward evaluations alone. For smooth deterministic objectives under Gaussian direction sampling, we bound the finite-difference error, quantify the gradient captured by the random subspace, and prove that $\|\nabla f(\bx_k)\|_2 \to 0$ almost surely under a safeguarded radius update. Under a matched budget of 8,400 training-objective forward passes on CommitmentBank, \texttt{MpSub} achieves mean test accuracies of 0.673 on OPT-125M and 0.690 on OPT-350M using fixed parameters, matching the performance of MeZO with development-selected learning rates (0.685 at both sizes).
+Full-parameter fine-tuning of large language models has a substantial memory cost because backpropagation requires storing activations and gradients. Zeroth-order optimization avoids that by estimating update directions from loss evaluations, but existing methods often depend on a learning rate that must be retuned for each model and task. We propose the momentum $p$-dimensional subspace trust-region method (\texttt{MpSub}). At each iteration, \texttt{MpSub} searches within a $p$-dimensional subspace: one direction preserves the historical information carried by the most recent accepted step, while the remaining directions promote exploration through fresh random sampling. The subspace gradient is estimated by central differences, a trial step is computed from a linear trust-region model, and the trust-region radius is updated according to the agreement between predicted and observed loss reduction. The radius controls both the finite-difference perturbation and the trust-region bound on the subspace step, so no learning rate is required. In the LLM setting, all evaluations within an iteration share one minibatch, and the directions are regenerated on the fly and applied in place, so training uses forward evaluations alone. For smooth deterministic objectives under Gaussian direction sampling, we bound the finite-difference error, quantify the gradient captured by the random subspace, and establish almost-sure global convergence ($\liminf_{k\to\infty} \|\nabla f(\bx_k)\|_2 = 0$) under a safeguarded radius update. Under a matched budget of 8,400 training-objective forward passes on CommitmentBank, \texttt{MpSub} achieves mean test accuracies of 0.673 on OPT-125M and 0.690 on OPT-350M using fixed parameters, matching the performance of MeZO with development-selected learning rates (0.685 at both sizes).
 \end{abstract}
 
 \begin{keywords}
@@ -87,7 +87,7 @@ We therefore consider the LLM fine-tuning problem
 \end{equation}
 and propose \texttt{MpSub}, a momentum $p$-dimensional subspace trust-region method. \texttt{MpSub} keeps the momentum-plus-exploration structure of 2D-MoSub but replaces quadratic interpolation with directional derivatives estimated by central differences. These estimates define a linear model in a $p$-dimensional subspace formed by the most recent accepted displacement and $p-1$ fresh Gaussian directions. The resulting iteration requires $2p+2$ function evaluations, so the evaluation cost grows linearly with the subspace dimension. For LLM fine-tuning, all evaluations within one iteration use the same minibatch, and the random directions are regenerated from seeds when needed rather than stored explicitly.
 
-For smooth deterministic objectives, we analyze the Gaussian directions directly without orthogonality assumptions. We derive finite-difference error bounds, quantify the gradient captured by the random subspace, and show that the gradient norm converges to zero almost surely under a safeguarded trust-region radius update. We then compare \texttt{MpSub} with MeZO on OPT-125M and OPT-350M under matched forward-evaluation budgets.
+For smooth deterministic objectives, we analyze the Gaussian directions directly without orthogonality assumptions. We derive finite-difference error bounds, quantify the gradient captured by the random subspace, and prove almost-sure global convergence ($\liminf_{k\to\infty} \|\nabla f(\bx_k)\|_2 = 0$) under a safeguarded trust-region radius update. We then compare \texttt{MpSub} with MeZO on OPT-125M and OPT-350M under matched forward-evaluation budgets.
 
 \section{MpSub}
 \label{section:MpSub}
@@ -356,7 +356,7 @@ independently.
 \begin{lemma}[Gaussian gradient capture]
 \label{lem:gaussian_capture}
 \label{lem:capture}
-Let $\bm v_k = \nabla f(\bx_k)$. Conditionally on $\mathcal F_k$,
+Suppose $p\ge 2$, and let $\bm v_k = \nabla f(\bx_k)$. Conditionally on $\mathcal F_k$,
 \begin{equation}
 \label{eq:chi_square_capture}
 \sum_{i=2}^p \left( \bm v_k^\top\bd_i^{(k)} \right)^2 \overset{d}{=} \frac{\|\bm v_k\|_2^2}{n} \chi^2_{p-1}.
@@ -380,13 +380,11 @@ For every $i=2,\ldots,p$,
 \]
 and these random variables are conditionally independent. Equation~\eqref{eq:chi_square_capture} follows immediately, and taking expectations gives \eqref{eq:expected_gaussian_capture}.
 
-To prove \eqref{eq:good_frame_probability}, fix $q\in(0,1)$. Since a $\chi^2_{p-1}$ random variable is positive almost surely, we can choose $\tau>0$ sufficiently small that $\mathbb P(\chi^2_{p-1}\ge\tau)$ is arbitrarily close to one. Setting $\alpha=\sqrt{\tau/n}$, equation~\eqref{eq:chi_square_capture} implies
+To prove \eqref{eq:good_frame_probability}, fix $q\in(0,1)$. Since $p\ge 2$, a $\chi^2_{p-1}$ random variable is positive almost surely. We can choose $\tau>0$ such that $\mathbb P(\chi^2_{p-1}\ge\tau) \ge 1 - \frac{1-q}{2}$. Setting $\alpha=\sqrt{\tau/n}$, equation~\eqref{eq:chi_square_capture} and $\|\hat{\bg}_k\|_2^2 \ge \sum_{i=2}^p (\bm v_k^\top\bd_i^{(k)})^2$ imply
 \[
-\left( \sum_{i=2}^p (\bm v_k^\top\bd_i^{(k)})^2 \right)^{1/2} \ge \alpha\|\bm v_k\|_2
+\mathbb P\left( \|\hat{\bg}_k\|_2 \ge \alpha\|\bm v_k\|_2 \;\middle|\; \mathcal F_k \right) \ge 1 - \frac{1-q}{2}.
 \]
-with probability arbitrarily close to one.
-
-The Gaussian norms $\|\bz_i\|_2/\sqrt n$ are finite almost surely, so $R$ can also be chosen sufficiently large that all newly sampled directions have norm at most $R$ with probability arbitrarily close to one. The momentum direction, when present, has norm one. A union bound then gives \eqref{eq:good_frame_probability}.
+Similarly, since each $\|\bz_i\|_2/\sqrt n$ is almost surely finite and $\|\bd_1^{(k)}\|_2 \le 1$, we can choose $R>1$ such that $\mathbb P(\max_{1\le i\le p}\|\bd_i^{(k)}\|_2 \le R \mid \mathcal F_k) \ge 1 - \frac{1-q}{2}$. A union bound then gives \eqref{eq:good_frame_probability}.
 \end{proof}
 
 The next proposition bounds the objective decrease produced by the trial step for a general frame.
@@ -508,7 +506,7 @@ satisfies $\mathbb P(G_k\mid\mathcal F_k)\ge q$. On $G_k$, we have $Q_k\le\sqrt 
 \[
 \|\bg_k\|_2 \ge \|\hat{\bg}_k\|_2 - \|\bg_k-\hat{\bg}_k\|_2 \ge \alpha\varepsilon - \frac{L\sqrt p\,R^2}{2}\Delta_k.
 \]
-Since $\Delta_k\to0$ by Lemma~\ref{lem:radius_summability}, for all sufficiently large $k$ we have
+Since $\Delta_k\to0$ by Lemma~\ref{lem:radius_summability}, for all sufficiently large $k$ we have $\gamma_2\Delta_k \le \Delta_{\max}$ and
 \begin{equation}
 \label{eq:g_lower_good}
 \|\bg_k\|_2 \ge \frac{\alpha\varepsilon}{2}.
@@ -517,7 +515,7 @@ Proposition~\ref{prop:general_descent} then ensures that, on $G_k$ and for all s
 \[
 \rho_k\ge\eta \qquad \text{and} \qquad \|\bg_k\|_2\ge\kappa\Delta_k.
 \]
-Consequently, every occurrence of $G_k$ for sufficiently large $k$ produces $\Delta_{k+1}=\gamma_2\Delta_k$, while on the remaining iterations $\Delta_{k+1}\ge\gamma_1\Delta_k$.
+Because $\gamma_2\Delta_k \le \Delta_{\max}$ holds for all large $k$, the update rule \eqref{eq:safeguarded_radius} on $G_k$ produces $\Delta_{k+1}=\gamma_2\Delta_k$ without truncation, while on the remaining iterations $\Delta_{k+1}\ge\gamma_1\Delta_k$.
 
 Let $I_k \coloneqq \mathbf{1}_{G_k}$. For all sufficiently large $k$,
 \begin{equation}
@@ -535,7 +533,9 @@ Averaging \eqref{eq:log_radius_increment} over $N$ steps therefore yields
 where the strict inequality follows from \eqref{eq:q_condition}. This implies $\Delta_k \to \infty$, contradicting $\Delta_k\to0$ from Lemma~\ref{lem:radius_summability}. Thus \eqref{eq:gradient_lower_contradiction} cannot hold, establishing \eqref{eq:liminf_gradient}.
 \end{proof}
 
-To establish full convergence, fix any $\varepsilon>0$ and define the index set of large gradients:
+Theorem~\ref{thm:liminf_convergence} establishes almost-sure global convergence in the subsequential sense, which is the primary convergence guarantee in derivative-free and randomized trust-region methods \cite{conn2009introduction,conn2000trust}.
+
+To investigate under what conditions the entire sequence of gradient norms converges to zero, fix any $\varepsilon>0$ and define the index set of large gradients:
 \begin{equation}
 \mathcal K_\varepsilon \coloneqq \left\{ k : \|\nabla f(\bx_k)\|_2 > \varepsilon \right\}.
 \end{equation}
@@ -543,6 +543,11 @@ To establish full convergence, fix any $\varepsilon>0$ and define the index set 
 \begin{lemma}
 \label{lem:radius_sum_large_gradient}
 Under the assumptions of Theorem~\ref{thm:liminf_convergence}, for every $\varepsilon>0$,
+\begin{equation}
+\label{eq:good_frame_sum}
+\sum_{k\in\mathcal K_\varepsilon\cap G_k}\Delta_k < \infty \qquad \text{almost surely}.
+\end{equation}
+If, additionally, the renewal property for probabilistically accurate models holds along $\mathcal K_\varepsilon$ \cite{bandeira2014convergence,Gratton-2017} (that is, the run length of consecutive unsuccessful iterations between occurrences of $G_k$ is stochastically dominated by a geometric distribution), then
 \begin{equation}
 \label{eq:radius_sum_large_gradient}
 \sum_{k\in\mathcal K_\varepsilon}\Delta_k < \infty \qquad \text{almost surely}.
@@ -554,35 +559,28 @@ Choose the good-frame event $G_k$ as in the proof of Theorem~\ref{thm:liminf_con
 \[
 f(\bx_k)-f(\bx_{k+1}) \ge \frac{\eta\alpha\varepsilon}{2}\Delta_k.
 \]
-Because $f$ is bounded below, summing this decrease over all such iterations gives
-\[
-\sum_{k\in\mathcal K_\varepsilon\cap G_k}\Delta_k < \infty.
-\]
-Since the conditioning events $G_k$ satisfy $\mathbb P(G_k\mid\mathcal F_k)\ge q > 1/2$ uniformly, applying the renewal property for probabilistically accurate models \cite{bandeira2014convergence,Gratton-2017} along the index subsequence $\mathcal K_\varepsilon$ implies that the sum over the entire set $\mathcal K_\varepsilon$ is finite:
-\[
-\sum_{k\in\mathcal K_\varepsilon}\Delta_k < \infty \qquad \text{almost surely}.
-\]
+Because $f$ is bounded below, summing this decrease over all such iterations establishes \eqref{eq:good_frame_sum}. Under the renewal property, the total sum of radii over $\mathcal K_\varepsilon$ is bounded by a constant multiple of the sum over $\mathcal K_\varepsilon \cap G_k$, yielding \eqref{eq:radius_sum_large_gradient}.
 \end{proof}
 
-Let $\beta_k \coloneqq \|\bm D_k\|_2$. Since the spectral norm is bounded by the Frobenius norm, we have
+Recall that $\beta_k = \|\bm D_k\|_2$. Since the spectral norm is bounded by the Frobenius norm, we have
 \[
 \mathbb E[\beta_k^2\mid\mathcal F_k] \le \mathbb E\bigl[\|\bm D_k\|_{\mathrm{F}}^2 \;\big|\; \mathcal F_k\bigr] = \|\bd_1^{(k)}\|_2^2 + \sum_{i=2}^p \mathbb E\left[\frac{\|\bz_i\|_2^2}{n}\right] \le 1 + (p-1) = p,
 \]
 which immediately implies $\sup_k \mathbb E[\beta_k\mid\mathcal F_k] \le \sqrt{p} < \infty$ and $\sup_k \mathbb E[\beta_k^2\mid\mathcal F_k] \le p < \infty$.
-Together with Lemmas~\ref{lem:radius_summability} and~\ref{lem:radius_sum_large_gradient}, these moment bounds imply
+Together with Lemma~\ref{lem:radius_summability}, these moment bounds imply
 \begin{equation}
 \label{eq:actual_step_decay}
 \lim_{k\to\infty} \beta_k\Delta_k = 0 \qquad \text{almost surely},
 \end{equation}
-and, for every $\varepsilon>0$,
+and, whenever \eqref{eq:radius_sum_large_gradient} holds,
 \begin{equation}
 \label{eq:actual_step_sum}
 \sum_{k\in\mathcal K_\varepsilon} \beta_k\Delta_k < \infty \qquad \text{almost surely}.
 \end{equation}
 
-\begin{theorem}[Global convergence]
+\begin{theorem}[Full global convergence]
 \label{thm:global_convergence}
-Under the assumptions of Theorem~\ref{thm:liminf_convergence},
+Under the assumptions of Theorem~\ref{thm:liminf_convergence}, if \eqref{eq:radius_sum_large_gradient} holds for every $\varepsilon>0$, then
 \begin{equation}
 \label{eq:gradient_convergence}
 \lim_{k\to\infty} \|\nabla f(\bx_k)\|_2 = 0 \qquad \text{almost surely}.
@@ -602,7 +600,7 @@ By the Lipschitz continuity of the gradient (Assumption~\ref{ass:smooth}),
 \[
 \varepsilon < \|\nabla f(\bx_{b_j})\|_2 - \|\nabla f(\bx_{a_j})\|_2 \le L \sum_{k=a_j}^{b_j-1} \|\bx_{k+1}-\bx_k\|_2.
 \]
-Since $\|\bx_{k+1}-\bx_k\|_2 \le \|\bm D_k \bs_s\|_2 \le \beta_k\Delta_k$, we can partition the summation as
+Since $\|\bx_{k+1}-\bx_k\|_2 \le \|\bm D_k \bs_k\|_2 \le \beta_k\Delta_k$, we can partition the summation as
 \[
 \sum_{k=a_j}^{b_j-1} \|\bx_{k+1}-\bx_k\|_2 \le \beta_{a_j}\Delta_{a_j} + \sum_{k=a_j+1}^{b_j-1} \beta_k\Delta_k.
 \]
@@ -611,7 +609,7 @@ As $j\to\infty$, the first term $\beta_{a_j}\Delta_{a_j} \to 0$ almost surely by
 Therefore, \eqref{eq:gradient_convergence} holds almost surely.
 \end{proof}
 
-Theorem~\ref{thm:global_convergence} establishes almost-sure first-order global convergence for a fixed deterministic objective. In our LLM fine-tuning experiments, minibatches change across iterations, so asymptotic convergence to a stationary point of the population loss is not claimed.
+Theorem~\ref{thm:liminf_convergence} (and Theorem~\ref{thm:global_convergence}) establishes first-order global convergence for a fixed deterministic objective. In our LLM fine-tuning experiments, minibatches change across iterations, so asymptotic convergence to a stationary point of the population loss is not claimed.
 \section{Numerical Experiments}
 \label{sec:experiments}
 
@@ -705,7 +703,7 @@ As $p$ increases from 5 to 20, development accuracy rises from $0.70$ to $0.78$ 
 \section{Conclusion}
 \label{sec:conclusion}
 
-We proposed \texttt{MpSub}, which combines a random subspace with trust-region step-size control for derivative-free LLM fine-tuning. For smooth deterministic objectives, we showed that the gradient norm converges to zero almost surely under Gaussian direction sampling and the safeguarded radius update. On CommitmentBank, \texttt{MpSub} achieved results comparable to tuned MeZO on OPT-125M and OPT-350M under the same forward-pass budget, while using the same trust-region settings for both models.
+We proposed \texttt{MpSub}, which combines a random subspace with trust-region step-size control for derivative-free LLM fine-tuning. For smooth deterministic objectives, we proved that $\liminf_{k\to\infty} \|\nabla f(\bx_k)\|_2 = 0$ almost surely under Gaussian direction sampling and the safeguarded radius update, and established full convergence under the renewal property. On CommitmentBank, \texttt{MpSub} achieved results comparable to tuned MeZO on OPT-125M and OPT-350M under the same forward-pass budget, while using the same trust-region settings for both models.
 
 Several questions remain open. The convergence analysis treats a fixed deterministic objective, whereas the LLM experiments resample the minibatch between iterations. Extending the analysis to changing minibatches is therefore the most direct theoretical next step. It would also be useful to study whether curvature information can be introduced into the subspace model without returning to the quadratic interpolation cost that motivated the linear model used here.
 
