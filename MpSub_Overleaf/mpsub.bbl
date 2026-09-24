@@ -1,89 +1,101 @@
 \begin{thebibliography}{10}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
 
 \bibitem{audet2017derivative}
-{\sc C.~Audet and W.~Hare}, {\em Derivative-free and blackbox optimization},
-  Springer, Heidelberg, 2017.
+Audet, C., Hare, W.: Derivative-free and blackbox optimization.
+\newblock Springer, Heidelberg (2017)
 
 \bibitem{bandeira2014convergence}
-{\sc A.~S. Bandeira, K.~Scheinberg, and L.~N. Vicente}, {\em Convergence
-  properties of trial search direction and trust-region methods based on
-  probabilistic models}, SIAM J. Optim., 24 (2014), pp.~1238--1264,
-  \url{https://doi.org/10.1137/130919307}.
+Bandeira, A.S., Scheinberg, K., Vicente, L.N.: Convergence properties of trial
+  search direction and trust-region methods based on probabilistic models.
+\newblock SIAM J. Optim. \textbf{24}(3), 1238--1264 (2014).
+\newblock \doi{10.1137/130919307}
 
 \bibitem{cartis2024randomizedsubspacederivativefreeoptimization}
-{\sc C.~Cartis, J.~Fowkes, and Z.~Shao}, {\em Randomised subspace methods for
-  non-convex optimization, with applications to nonlinear least-squares}, arXiv
-  preprint arXiv:2211.09873,  (2022).
+Cartis, C., Fowkes, J., Shao, Z.: Randomised subspace methods for non-convex
+  optimization, with applications to nonlinear least-squares.
+\newblock arXiv preprint arXiv:2211.09873  (2022)
 
 \bibitem{cartis2023scalable}
-{\sc C.~Cartis and L.~Roberts}, {\em Scalable subspace methods for
-  derivative-free nonlinear least-squares optimization}, Math. Program., 199
-  (2023), pp.~461--524.
+Cartis, C., Roberts, L.: Scalable subspace methods for derivative-free
+  nonlinear least-squares optimization.
+\newblock Math. Program. \textbf{199}(1-2), 461--524 (2023)
 
 \bibitem{chen2024enhancing}
-{\sc Y.~Chen, Y.~Zhang, L.~Cao, K.~Yuan, and Z.~Wen}, {\em Enhancing
-  zeroth-order fine-tuning for language models with low-rank structures}, in
-  International Conference on Learning Representations (ICLR), 2025.
+Chen, Y., Zhang, Y., Cao, L., Yuan, K., Wen, Z.: Enhancing zeroth-order
+  fine-tuning for language models with low-rank structures.
+\newblock In: International Conference on Learning Representations (ICLR)
+  (2025)
 
 \bibitem{conn2000trust}
-{\sc A.~R. Conn, N.~I.~M. Gould, and P.~L. Toint}, {\em Trust Region Methods},
-  SIAM, Philadelphia, 2000.
+Conn, A.R., Gould, N.I.M., Toint, P.L.: Trust Region Methods.
+\newblock SIAM, Philadelphia (2000)
 
 \bibitem{Conn2009a}
-{\sc A.~R. Conn, K.~Scheinberg, and L.~N. Vicente}, {\em Global convergence of
-  general derivative-free trust-region algorithms to first- and second-order
-  critical points}, SIAM J. Optim., 20 (2009), pp.~387--415.
+Conn, A.R., Scheinberg, K., Vicente, L.N.: Global convergence of general
+  derivative-free trust-region algorithms to first- and second-order critical
+  points.
+\newblock SIAM J. Optim. \textbf{20}, 387--415 (2009)
 
 \bibitem{conn2009introduction}
-{\sc A.~R. Conn, K.~Scheinberg, and L.~N. Vicente}, {\em Introduction to
-  Derivative-Free Optimization}, SIAM, Philadelphia, 2009.
+Conn, A.R., Scheinberg, K., Vicente, L.N.: Introduction to Derivative-Free
+  Optimization.
+\newblock SIAM, Philadelphia (2009)
 
 \bibitem{Gratton-2017}
-{\sc S.~Gratton, C.~W. Royer, L.~N. Vicente, and Z.~Zhang}, {\em {Complexity
-  and global rates of trust-region methods based on probabilistic models}}, IMA
-  J. Numer. Anal., 38 (2017), pp.~1579--1597.
+Gratton, S., Royer, C.W., Vicente, L.N., Zhang, Z.: {Complexity and global
+  rates of trust-region methods based on probabilistic models}.
+\newblock IMA J. Numer. Anal. \textbf{38}(3), 1579--1597 (2017)
 
 \bibitem{kozak2021stochastic}
-{\sc D.~Kozak, S.~Becker, A.~Doostan, and L.~Tenorio}, {\em A stochastic
-  subspace approach to gradient-free optimization in high dimensions},
-  Computational Optimization and Applications, 79 (2021), pp.~339--368,
-  \url{https://doi.org/10.1007/s10589-021-00271-w}.
+Kozak, D., Becker, S., Doostan, A., Tenorio, L.: A stochastic subspace approach
+  to gradient-free optimization in high dimensions.
+\newblock Computational Optimization and Applications \textbf{79}(2), 339--368
+  (2021).
+\newblock \doi{10.1007/s10589-021-00271-w}
 
 \bibitem{malladi2023mezo}
-{\sc S.~Malladi, T.~Gao, E.~Nichani, A.~Damian, J.~D. Lee, D.~Chen, and
-  S.~Arora}, {\em Fine-tuning language models with just forward passes}, in
-  Advances in Neural Information Processing Systems, vol.~36, 2023,
-  pp.~53038--53075.
+Malladi, S., Gao, T., Nichani, E., Damian, A., Lee, J.D., Chen, D., Arora, S.:
+  Fine-tuning language models with just forward passes.
+\newblock In: Advances in Neural Information Processing Systems, vol.~36, pp.
+  53038--53075 (2023)
 
 \bibitem{Menickelly2023}
-{\sc M.~Menickelly}, {\em Avoiding geometry improvement in derivative-free
-  model-based methods via randomization}, arXiv preprint arXiv:2305.17336,
-  (2023).
+Menickelly, M.: Avoiding geometry improvement in derivative-free model-based
+  methods via randomization.
+\newblock arXiv preprint arXiv:2305.17336  (2023)
 
 \bibitem{nesterov2017random}
-{\sc Y.~Nesterov and V.~Spokoiny}, {\em Random gradient-free minimization of
-  convex functions}, Foundations of Computational Mathematics, 17 (2017),
-  pp.~527--566.
+Nesterov, Y., Spokoiny, V.: Random gradient-free minimization of convex
+  functions.
+\newblock Foundations of Computational Mathematics \textbf{17}(2), 527--566
+  (2017)
 
 \bibitem{xie2023twodimensional}
-{\sc P.~Xie and Y.~x.~Yuan}, {\em A new two-dimensional model-based subspace
-  method for large-scale unconstrained derivative-free optimization:
-  {2D-MoSub}}, Optimization Methods and Software, 41 (2025),
-  \url{https://doi.org/10.1080/10556788.2025.2601670}.
+Xie, P., x.~Yuan, Y.: A new two-dimensional model-based subspace method for
+  large-scale unconstrained derivative-free optimization: {2D-MoSub}.
+\newblock Optimization Methods and Software \textbf{41}(1) (2025).
+\newblock \doi{10.1080/10556788.2025.2601670}
 
 \bibitem{yu2024subzero}
-{\sc Z.~Yu, P.~Zhou, S.~Wang, J.~Li, M.~Tian, and H.~Huang}, {\em Zeroth-order
-  fine-tuning of {LLM}s in random subspaces}, in Proceedings of the IEEE/CVF
-  International Conference on Computer Vision (ICCV), 2025.
+Yu, Z., Zhou, P., Wang, S., Li, J., Tian, M., Huang, H.: Zeroth-order
+  fine-tuning of {LLM}s in random subspaces.
+\newblock In: Proceedings of the IEEE/CVF International Conference on Computer
+  Vision (ICCV) (2025)
 
 \bibitem{yuan2007subspace}
-{\sc Y.~Yuan}, {\em Subspace techniques for nonlinear optimization}, in Some
-  Topics in Industrial and Applied Mathematics, R.~Jeltsch, D.~Q. Li, and I.~H.
-  Sloan, eds., Higher Education Press, Beijing, 2007, pp.~206--218.
+Yuan, Y.: Subspace techniques for nonlinear optimization.
+\newblock In: R.~Jeltsch, D.Q. Li, I.H. Sloan (eds.) Some Topics in Industrial
+  and Applied Mathematics, pp. 206--218. Higher Education Press, Beijing (2007)
 
 \bibitem{yuan2014review}
-{\sc Y.~Yuan}, {\em A review on subspace methods for nonlinear optimization},
-  in Proceedings of the International Congress of Mathematicians (ICM 2014),
-  vol.~4, 2014, pp.~807--827.
+Yuan, Y.: A review on subspace methods for nonlinear optimization.
+\newblock In: Proceedings of the International Congress of Mathematicians (ICM
+  2014), vol.~4, pp. 807--827 (2014)
 
 \end{thebibliography}

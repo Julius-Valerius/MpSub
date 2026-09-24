@@ -1,34 +1,42 @@
-% mpsub.tex -- Computational Optimization and Applications (COAP) format
-% Document class: svjour3 (Springer format for COAP)
-\RequirePackage{fix-cm}
-\documentclass[smallextended]{svjour3}
+% mpsub.tex -- SIAM article format (siamart171218)
+% The 2017 SIAM class relies on pre-hook LaTeX label internals; pin the
+% compatibility layer so that it remains usable with TeX Live 2026.
+\RequirePackage[2023-11-01]{latexrelease}
+\documentclass{siamart171218}
 
-\smartqed  % flush right qed marks, e.g. at end of proof
-
-\journalname{Computational Optimization and Applications}
-
-% Packages
+% Packages (siamart loads amsmath, amssymb, amsthm, hyperref, cleveref itself)
 \usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{epstopdf}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{bm}
 \usepackage{mathtools}
-\usepackage{url}
-\usepackage{marvosym}
-\usepackage{hyperref}
+\ifpdf
+  \DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
 
-% Theorem-like environments
-\spdefaulttheorem{assumption}{Assumption}{\bfseries}{\itshape}
+% Theorem-like environment not predefined by the class
+\newsiamthm{assumption}{Assumption}
 
-% Running headers
-\titlerunning{MpSub: subspace trust-region derivative-free LLM fine-tuning}
-\authorrunning{Y.~Wang, H.~Yao, and P.~Xie}
+% Running headers, title, authors
+\headers{MpSub: subspace trust-region derivative-free LLM fine-tuning}{Y.~Wang, H.~Yao, and P.~Xie}
+\title{MpSub: A Momentum $p$-Dimensional Subspace Trust-Region Method for Derivative-Free Fine-Tuning of Large Language Models\thanks{Preprint.}}
+\author{Yuyang Wang\thanks{Xi'an Jiaotong University, Xi'an, China (\email{vibrancy05@stu.xjtu.edu.cn}).}
+\and Haoyu Yao\thanks{Xi'an Jiaotong University, Xi'an, China (\email{yaohaoyu@stu.xjtu.edu.cn}).}
+\and Pengcheng Xie\thanks{Lawrence Berkeley National Laboratory, Berkeley, CA, USA (\email{pxie@lbl.gov}). Corresponding author.}}
+
+\ifpdf
+\hypersetup{
+  pdftitle={MpSub: a momentum p-dimensional subspace trust-region method for derivative-free fine-tuning of large language models}
+}
+\fi
 
 %%%%%%%%%%% Custom macros %%%%%%%%%%%
 \newcommand{\bx}{\bm{x}}
@@ -44,29 +52,19 @@
 
 \begin{document}
 
-\title{MpSub: A Momentum $p$-Dimensional Subspace Trust-Region Method for Derivative-Free Fine-Tuning of Large Language Models}
-
-\author{Yuyang Wang \and Haoyu Yao \and Pengcheng Xie}
-
-\institute{Y. Wang \and H. Yao \at
-              Xi'an Jiaotong University, Xi'an, China \\
-              \email{vibrancy05@stu.xjtu.edu.cn}, \email{yaohaoyu@stu.xjtu.edu.cn}
-           \and
-           P. Xie (\Letter) \at
-              Lawrence Berkeley National Laboratory, Berkeley, CA, USA \\
-              \email{pxie@lbl.gov}
-}
-
-\date{Received: date / Accepted: date}
-
 \maketitle
 
 \begin{abstract}
-Zeroth-order optimization avoids the high activation memory of backpropagation in fine-tuning large language models, but existing methods rely on sensitive learning rates that require costly per-task tuning. We propose \texttt{MpSub}, a momentum $p$-dimensional subspace trust-region method. At each iteration, \texttt{MpSub} optimizes over a subspace combining the historical momentum of the last accepted step with random exploration directions. Subspace gradients are estimated via central differences, and trial steps are solved from a linear trust-region model. The trust-region radius adapts dynamically via an agreement ratio and governs both the finite-difference perturbation and step bounds, eliminating the need for a manual learning rate. Directions are regenerated in place from random seeds, maintaining $\mathcal{O}(n)$ auxiliary memory without storing the subspace basis. Under Gaussian direction sampling on smooth deterministic objectives, we bound the finite-difference error, quantify the gradient captured by the subspace, and establish almost-sure global convergence ($\liminf_{k\to\infty} \|\nabla f(\bx_k)\|_2 = 0$). On CommitmentBank under a matched budget of 8,400 forward passes, \texttt{MpSub} achieves mean test accuracies of 0.673 on OPT-125M and 0.690 on OPT-350M with fixed default parameters, matching MeZO tuned via extensive learning-rate search (0.685 at both sizes).
-
-\keywords{Derivative-free optimization \and Subspace trust region \and Zeroth-order optimization \and Large language model fine-tuning}
-\subclass{90C56 \and 65K05 \and 90C26}
+Full-parameter fine-tuning of large language models has a substantial memory cost because backpropagation requires storing activations and gradients. Zeroth-order optimization avoids that by estimating update directions from loss evaluations, but existing methods often depend on a learning rate that must be retuned for each model and task. We propose the momentum $p$-dimensional subspace trust-region method (\texttt{MpSub}). At each iteration, \texttt{MpSub} searches within a $p$-dimensional subspace: one direction preserves the historical information carried by the most recent accepted step, while the remaining directions promote exploration through random sampling. The subspace gradient is estimated by central differences, a trial step is computed from a linear trust-region model, and the trust-region radius is updated according to the agreement between predicted and observed loss reduction. The radius controls both the finite-difference perturbation and the trust-region bound on the subspace step, so no learning rate is required. Directions are generated dynamically from random seeds and applied in place, keeping auxiliary memory at $\mathcal{O}(n)$ without storing the subspace frame. For smooth deterministic objectives under Gaussian direction sampling, we bound the finite-difference error, quantify the gradient captured by the random subspace, and establish almost-sure global convergence ($\liminf_{k\to\infty} \|\nabla f(\bx_k)\|_2 = 0$) under a safeguarded radius update. Under a matched budget of 8,400 training-objective forward passes on CommitmentBank, \texttt{MpSub} achieves mean test accuracies of 0.673 on OPT-125M and 0.690 on OPT-350M using fixed parameters, achieving performance comparable to MeZO with development-selected learning rates (0.685 at both sizes).
 \end{abstract}
+
+\begin{keywords}
+derivative-free optimization, subspace trust region, zeroth-order optimization, large language model fine-tuning
+\end{keywords}
+
+\begin{AMS}
+90C56, 65K05, 90C26
+\end{AMS}
 
 \section{Introduction}
 \label{sec:intro}
@@ -75,7 +73,7 @@ Zeroth-order (ZO) optimization has become an attractive alternative for full-par
 
 These methods still use a prescribed learning rate to determine the update size. Its effective value can vary substantially across settings and may require a separate search. In addition, a single random direction contains only a small amount of directional information in a very high-dimensional parameter space. For a normalized isotropic direction, the typical magnitude of its projection onto a fixed gradient decreases as the dimension grows. This motivates using more than one search direction while avoiding a proportional increase in stored parameter-sized vectors.
 
-Trust-region methods provide a natural way to control the step size without prescribing a learning rate. In derivative-free optimization, the trust-region radius is adjusted according to the agreement between a local model and the observed objective values \cite{audet2017derivative,conn2009introduction,conn2000trust,Conn2009a}. Direct model construction in the full parameter space is not practical for models with hundreds of millions of variables, which motivates restricting the search to a much smaller subspace \cite{cartis2023scalable,yuan2007subspace,yuan2014review}. Randomized subspaces have also been studied in derivative-free optimization \cite{cartis2024randomizedsubspacederivativefreeoptimization,kozak2021stochastic,Menickelly2023}.
+Trust-region methods provide a natural way to control the step size without prescribing a learning rate. In derivative-free optimization, the trust-region radius is adjusted according to the agreement between a local model and the observed objective values \cite{audet2017derivative, conn2009introduction, conn2000trust, Conn2009a}. Direct model construction in the full parameter space is not practical for models with hundreds of millions of variables, which motivates restricting the search to a much smaller subspace \cite{cartis2023scalable, yuan2007subspace, yuan2014review}. Randomized subspaces have also been studied in derivative-free optimization \cite{cartis2024randomizedsubspacederivativefreeoptimization, kozak2021stochastic, Menickelly2023}.
 
 The closest method to the present work is 2D-MoSub \cite{xie2023twodimensional}. It searches in a two-dimensional subspace formed by the previous accepted step and a new search direction. The previous step carries information from the optimization trajectory, while the new direction provides exploration. A quadratic interpolation model is constructed in this two-dimensional subspace and minimized within a trust region. This combination of momentum and random exploration is also the starting point of our method. The difficulty in extending the same approach to a larger subspace lies in the quadratic model: a direct extension to dimension $p$ would require $\frac{1}{2}(p+1)(p+2)$ interpolation points. At $p=20$, this would require 231 points before a trial step is computed.
 
@@ -164,7 +162,7 @@ For each direction $\bd_i^{(k)}$, \texttt{MpSub} estimates the corresponding dir
 g_{k,i} = \frac{f(\bx_k + \Delta_k \, \bd_i^{(k)}) - f(\bx_k - \Delta_k \, \bd_i^{(k)})}{2\Delta_k}, \quad i = 1, \ldots, p.
 \label{eq:central_diff}
 \end{equation}
-The subspace gradient $\bg_k = (g_{k,1}, \ldots, g_{k,p})^\top \in \mathbb{R}^p$ collects these directional estimates, where each entry $g_{k,i}$ approximates $\nabla f(\bx_k)^\top \bd_i^{(k)}$. Setting the finite-difference perturbation to $\Delta_k$ directly links the sampling scale to the trust-region radius. Under the Lipschitz continuity of $\nabla f$, the finite-difference error is bounded linearly by $\Delta_k$ (Lemma~\ref{lem:fd}).
+Stacking these estimates yields the subspace gradient $\bg_k = (g_{k,1}, \ldots, g_{k,p})^\top \in \mathbb{R}^p$, where each entry $g_{k,i}$ approximates $\nabla f(\bx_k)^\top \bd_i^{(k)}$. Setting the finite-difference perturbation size equal to the trust-region radius $\Delta_k$ ties the sampling scale directly to the local trust-region size. Under the Lipschitz continuity of $\nabla f$, the finite-difference error is bounded linearly by $\Delta_k$, with bounds established in Lemma~\ref{lem:fd}.
 
 The estimated gradient defines a local linear surrogate model on the subspace coordinates:
 \begin{equation}
@@ -203,19 +201,17 @@ Upon evaluating the candidate loss $f^+ = f(\bx^+)$, \texttt{MpSub} assesses the
 \end{equation}
 The algorithm decouples iterate acceptance from trust-region radius adaptation (Step 4). The candidate point is accepted whenever it yields a strict objective decrease:
 \begin{equation}
-\begin{aligned}
-\bx_{k+1} &=
+\bx_{k+1} =
 \begin{cases}
 \bx^+, & \text{if } f(\bx^+) < f(\bx_k), \\
 \bx_k, & \text{otherwise},
 \end{cases}
-\\[4pt]
-\bm m_{k+1} &=
+\qquad
+\bm m_{k+1} =
 \begin{cases}
 \bx^+ - \bx_k, & \text{if } f(\bx^+) < f(\bx_k), \\
 \bm m_k, & \text{otherwise},
 \end{cases}
-\end{aligned}
 \label{eq:accept_rule}
 \end{equation}
 while the trust-region radius is updated according to the ratio test:
@@ -337,7 +333,6 @@ Subtracting the two expressions gives
 g_{k,i}-\hat g_{k,i} = \frac{R_{i,+}-R_{i,-}}{2\Delta_k},
 \]
 which proves \eqref{eq:fd_general_component}. Summing the squared componentwise bounds gives \eqref{eq:fd_general_vector}.
-\qed
 \end{proof}
 We now analyze the gradient captured by the Gaussian directions in Algorithm~\ref{alg:mpsub}. Let $\mathcal F_k$ contain the algorithmic history before the random exploratory directions at iteration $k$ are sampled. Conditionally on $\mathcal F_k$,
 \[
@@ -377,7 +372,6 @@ To prove \eqref{eq:good_frame_probability}, fix $q\in(0,1)$. Since $p\ge 2$, a $
 \mathbb P\left( \|\hat{\bg}_k\|_2 \ge \alpha\|\bm v_k\|_2 \;\middle|\; \mathcal F_k \right) \ge 1 - \frac{1-q}{2}.
 \]
 Similarly, since each $\|\bz_i\|_2/\sqrt n$ is almost surely finite and $\|\bd_1^{(k)}\|_2 \le 1$, we can choose $R>1$ such that $\mathbb P(\max_{1\le i\le p}\|\bd_i^{(k)}\|_2 \le R \mid \mathcal F_k) \ge 1 - \frac{1-q}{2}$. A union bound then gives \eqref{eq:good_frame_probability}.
-\qed
 \end{proof}
 
 The next proposition bounds the objective decrease produced by the trial step for a general frame.
@@ -418,7 +412,6 @@ f(\bx_k^+) &\le f(\bx_k) + \nabla f(\bx_k)^\top\bm h_k + \frac{L}{2}\|\bm h_k\|_
 \end{aligned}
 \]
 which proves \eqref{eq:general_decrease}. Dividing by the predicted reduction $\Delta_k\|\bg_k\|_2$ gives \eqref{eq:general_ratio}.
-\qed
 \end{proof}
 
 \subsection{Global convergence}
@@ -464,7 +457,6 @@ Summing this inequality from $k=0$ to $N$ yields
 (1-\gamma_1^2) \sum_{k=1}^{N}\Delta_k^2 + \Delta_{N+1}^2 \le \gamma_1^2\Delta_0^2 + \gamma_2^2 \sum_{k\in\mathcal S}\Delta_k^2.
 \]
 Because $\gamma_1\in(0,1)$, we have $1-\gamma_1^2 > 0$. Taking $N\to\infty$ establishes \eqref{eq:radius_square_summable}, which directly implies $\lim_{k\to\infty}\Delta_k = 0$.
-\qed
 \end{proof}
 
 This leads to subsequential convergence of the gradient norm.
@@ -526,7 +518,6 @@ Averaging \eqref{eq:log_radius_increment} over $N$ steps therefore yields
 \liminf_{N\to\infty} \frac{\log\Delta_{K+N}-\log\Delta_K}{N} \ge q\log\gamma_2 + (1-q)\log\gamma_1 > 0 \qquad \text{almost surely},
 \]
 where the strict inequality follows from \eqref{eq:q_condition}. This implies $\Delta_k \to \infty$, contradicting $\Delta_k\to0$ from Lemma~\ref{lem:radius_summability}. Thus \eqref{eq:gradient_lower_contradiction} cannot hold, establishing \eqref{eq:liminf_gradient}.
-\qed
 \end{proof}
 
 Theorem~\ref{thm:liminf_convergence} establishes almost-sure subsequential convergence, consistent with standard first-order guarantees in derivative-free trust-region optimization \cite{conn2009introduction,conn2000trust}.
@@ -556,7 +547,6 @@ Choose the good-frame event $G_k$ as in the proof of Theorem~\ref{thm:liminf_con
 f(\bx_k)-f(\bx_{k+1}) \ge \frac{\eta\alpha\varepsilon}{2}\Delta_k.
 \]
 Because $f$ is bounded below, summing this decrease over all such iterations establishes \eqref{eq:good_frame_sum}. Under the renewal property, the total sum of radii over $\mathcal K_\varepsilon$ is bounded by a constant multiple of the sum over $\mathcal K_\varepsilon \cap G_k$, yielding \eqref{eq:radius_sum_large_gradient}.
-\qed
 \end{proof}
 
 Recall that $\beta_k = \|\bm D_k\|_2$. Since the spectral norm is bounded by the Frobenius norm, we have
@@ -603,7 +593,6 @@ Since $\|\bx_{k+1}-\bx_k\|_2 \le \|\bm D_k \bs_k\|_2 \le \beta_k\Delta_k$, we ca
 As $j\to\infty$, the first term $\beta_{a_j}\Delta_{a_j} \to 0$ almost surely by \eqref{eq:actual_step_decay}. Furthermore, all intermediate indices $k \in \{a_j+1, \ldots, b_j-1\}$ belong to $\mathcal K_\varepsilon$. Because $\sum_{k\in\mathcal K_\varepsilon} \beta_k\Delta_k < \infty$ almost surely by \eqref{eq:actual_step_sum}, the tail sum $\sum_{k=a_j+1}^{b_j-1} \beta_k\Delta_k$ tends to zero as $j\to\infty$. Consequently, the entire right-hand side converges to zero, which contradicts the strict lower bound $\varepsilon > 0$.
 
 Therefore, \eqref{eq:gradient_convergence} holds almost surely.
-\qed
 \end{proof}
 
 \section{Numerical Experiments}
@@ -652,7 +641,7 @@ On OPT-125M, \texttt{MpSub} with the default radius $\Delta_0 = 10^{-1}$ achieve
 \label{fig:convergence}
 \end{figure}
 
-Figure~\ref{fig:convergence} shows development loss across forward passes. On OPT-125M, MeZO decreases quickly initially but then plateaus, whereas \texttt{MpSub} descends steadily to a lower final loss ($0.674$ vs.\ $0.703$). On OPT-350M, MeZO achieves a lower loss during training, but both methods reach similar final test accuracy ($0.690$ for \texttt{MpSub} vs.\ $0.685$ for MeZO).
+Figure~\ref{fig:convergence} shows development loss across forward passes. On OPT-125M, MeZO drops quickly initially but then plateaus, whereas \texttt{MpSub} descends steadily to a lower final loss ($0.674$ vs.\ $0.703$). On OPT-350M, MeZO achieves a lower loss during training, but both methods reach similar final test accuracy ($0.690$ for \texttt{MpSub} vs.\ $0.685$ for MeZO).
 
 \subsection{Step-size sensitivity}
 \label{subsec:sensitivity}
@@ -666,14 +655,14 @@ Figure~\ref{fig:sensitivity} compares the sensitivity of MeZO across learning ra
 \label{fig:sensitivity}
 \end{figure}
 
-MeZO is sensitive to its learning rate: varying $\eta_{\mathrm{M}}$ by one order of magnitude from $10^{-6}$ reduces test accuracy by $0.048$ at $10^{-7}$ and by $0.084$ at $10^{-5}$, requiring a grid search ($42{,}000$ forward passes on OPT-125M and $25{,}200$ on OPT-350M) to find an effective rate. Because $\eta_{\mathrm{M}}$ is held static throughout training, any mismatch between the chosen rate and the local curvature directly produces either premature stagnation or catastrophic divergence, necessitating an exhaustive sweep across multiple orders of magnitude ($10^{-8}$ to $10^{-4}$).
+MeZO is sensitive to its learning rate: varying $\eta_{\mathrm{M}}$ by one order of magnitude from $10^{-6}$ reduces test accuracy by $0.048$ at $10^{-7}$ and by $0.084$ at $10^{-5}$, requiring a grid search ($42{,}000$ forward passes on OPT-125M and $25{,}200$ on OPT-350M) to find an effective rate.
 
-In contrast, \texttt{MpSub} shows little variation across the tested range: mean test accuracy remains between $0.655$ and $0.678$ across all five initial radii from $\Delta_0 = 10^{-3}$ to $3\times 10^{-1}$. This stability stems from the fundamentally different role of $\Delta_0$: it serves solely as an initial condition rather than an immutable step size. Under the geometric expansion rule \eqref{eq:radius_update_rule}, an overly conservative choice such as $\Delta_0 = 10^{-3}$ (two orders of magnitude below the default) doubles on successful steps and reaches the effective operating scale within $\lceil \log_2(10^2) \rceil \approx 7$ iterations, incurring negligible overhead over the 200-step budget. Conversely, excessively large initial radii ($\Delta_0 \gg 1$) are naturally avoided because $\Delta_k$ simultaneously sets the finite-difference perturbation in \eqref{eq:central_diff}, where oversized displacements degrade the accuracy of directional derivative estimates. Evaluating across the 300-fold span from $10^{-3}$ to $3\times 10^{-1}$ confirms that the default choice $\Delta_0 = 10^{-1}$ transfers reliably across model sizes without task-specific retuning.
+In contrast, \texttt{MpSub} shows little variation across the tested range: mean test accuracy remains between $0.655$ and $0.678$ across all five initial radii from $\Delta_0 = 10^{-3}$ to $3\times 10^{-1}$. Even when $\Delta_0$ is initialized conservatively at $10^{-3}$, successful steps double $\Delta_k$ until it reaches a scale where progress can be made. The default choice $\Delta_0 = 10^{-1}$ therefore works across both model sizes without retuning.
 
 \subsection{Effect of the subspace dimension}
 \label{subsec:p_ablation}
 
-Table~\ref{tab:p_ablation} examines the effect of varying the subspace dimension $p \in \{5, 10, \allowbreak 15, \allowbreak 20, \allowbreak 25, \allowbreak 30\}$ on OPT-125M over 100 iterations.
+Table~\ref{tab:p_ablation} examines the effect of varying the subspace dimension $p \in \{5, 10, 15, 20, 25, 30\}$ on OPT-125M over 100 iterations.
 
 \begin{table}[htb]
 \centering
@@ -705,16 +694,10 @@ Several questions remain open. The convergence analysis treats a fixed determini
 
 While this study evaluates classification on OPT-125M and OPT-350M, evaluating the method on larger models, broader benchmarks, and generative settings remains an important direction for future work. In addition, because the $2p$ directional evaluations within each iteration are mutually independent, parallel evaluation could substantially reduce wall-clock time. Finally, \texttt{MpSub} could be combined with parameter-efficient fine-tuning methods such as LoRA, where the trust-region mechanism would operate over a smaller parameter space.
 
-\begin{acknowledgements}
+\section*{Acknowledgements}
 The authors thank the developers of the MeZO and LOZO codebases, on which the experimental infrastructure builds.
-\end{acknowledgements}
 
-\section*{Declarations}
-\paragraph{Funding} Not applicable.
-\paragraph{Conflict of interest} The authors declare that they have no conflict of interest.
-\paragraph{Data availability} The dataset analyzed during the current study is available in the SuperGLUE benchmark repository (\url{https://super.gluebenchmark.com}).
-
-\bibliographystyle{spmpsci}
+\bibliographystyle{siamplain}
 \bibliography{refs}
 
 \end{document}
