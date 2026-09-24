@@ -4,6 +4,12 @@
 {\sc C.~Audet and W.~Hare}, {\em Derivative-free and blackbox optimization},
   Springer, Heidelberg, 2017.
 
+\bibitem{bandeira2014convergence}
+{\sc A.~S. Bandeira, K.~Scheinberg, and L.~N. Vicente}, {\em Convergence
+  properties of trial search direction and trust-region methods based on
+  probabilistic models}, SIAM J. Optim., 24 (2014), pp.~1238--1264,
+  \url{https://doi.org/10.1137/130919307}.
+
 \bibitem{cartis2024randomizedsubspacederivativefreeoptimization}
 {\sc C.~Cartis, J.~Fowkes, and Z.~Shao}, {\em Randomised subspace methods for
   non-convex optimization, with applications to nonlinear least-squares}, arXiv
@@ -31,6 +37,11 @@
 \bibitem{conn2009introduction}
 {\sc A.~R. Conn, K.~Scheinberg, and L.~N. Vicente}, {\em Introduction to
   Derivative-Free Optimization}, SIAM, Philadelphia, 2009.
+
+\bibitem{Gratton-2017}
+{\sc S.~Gratton, C.~W. Royer, L.~N. Vicente, and Z.~Zhang}, {\em {Complexity
+  and global rates of trust-region methods based on probabilistic models}}, IMA
+  J. Numer. Anal., 38 (2017), pp.~1579--1597.
 
 \bibitem{kozak2021stochastic}
 {\sc D.~Kozak, S.~Becker, A.~Doostan, and L.~Tenorio}, {\em A stochastic
