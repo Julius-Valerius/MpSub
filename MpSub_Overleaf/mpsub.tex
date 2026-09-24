@@ -564,10 +564,11 @@ Since the conditioning events $G_k$ satisfy $\mathbb P(G_k\mid\mathcal F_k)\ge q
 \]
 \end{proof}
 
-Let $\beta_k \coloneqq \|\bm D_k\|_2$. Because $\bm D_k$ contains one unit vector and $p-1$ independent scaled Gaussian vectors $\bz_i/\sqrt{n}$, standard spectral norm bounds for Gaussian random matrices ensure that
+Let $\beta_k \coloneqq \|\bm D_k\|_2$. Since the spectral norm is bounded by the Frobenius norm, we have
 \[
-\sup_k \mathbb E[\beta_k\mid\mathcal F_k] < \infty \qquad \text{and} \qquad \sup_k \mathbb E[\beta_k^2\mid\mathcal F_k] < \infty.
+\mathbb E[\beta_k^2\mid\mathcal F_k] \le \mathbb E\bigl[\|\bm D_k\|_{\mathrm{F}}^2 \;\big|\; \mathcal F_k\bigr] = \|\bd_1^{(k)}\|_2^2 + \sum_{i=2}^p \mathbb E\left[\frac{\|\bz_i\|_2^2}{n}\right] \le 1 + (p-1) = p,
 \]
+which immediately implies $\sup_k \mathbb E[\beta_k\mid\mathcal F_k] \le \sqrt{p} < \infty$ and $\sup_k \mathbb E[\beta_k^2\mid\mathcal F_k] \le p < \infty$.
 Together with Lemmas~\ref{lem:radius_summability} and~\ref{lem:radius_sum_large_gradient}, these moment bounds imply
 \begin{equation}
 \label{eq:actual_step_decay}
