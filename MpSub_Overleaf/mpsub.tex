@@ -647,7 +647,7 @@ On OPT-125M, \texttt{MpSub} with the default radius $\Delta_0 = 10^{-1}$ achieve
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.98\textwidth]{fig_convergence_models.pdf}
+\includegraphics[width=0.90\textwidth]{fig_convergence_models.pdf}
 \caption{Development loss versus training forward passes for OPT-125M (left) and OPT-350M (right). Shaded bands represent $\pm 1$ standard error of the mean across three random seeds.}
 \label{fig:convergence}
 \end{figure}
@@ -661,7 +661,7 @@ Figure~\ref{fig:sensitivity} compares the sensitivity of MeZO across learning ra
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.98\textwidth]{fig_sensitivity.pdf}
+\includegraphics[width=0.90\textwidth]{fig_sensitivity.pdf}
 \caption{Step-size sensitivity on OPT-125M under $8{,}400$ forward passes. Left: MeZO test accuracy across learning rates $\eta_{\mathrm{M}}$. Right: \texttt{MpSub} test accuracy across initial radii $\Delta_0$.}
 \label{fig:sensitivity}
 \end{figure}
@@ -713,6 +713,7 @@ The authors thank the developers of the MeZO and LOZO codebases, on which the ex
 \paragraph{Funding} Not applicable.
 \paragraph{Conflict of interest} The authors declare that they have no conflict of interest.
 \paragraph{Data availability} The dataset analyzed during the current study is available in the SuperGLUE benchmark repository (\url{https://super.gluebenchmark.com}).
+\paragraph{Code availability} The source code for \texttt{MpSub} and the experiment scripts are available at \url{https://github.com/Julius-Valerius/MpSub}.
 
 \bibliographystyle{spmpsci}
 \bibliography{refs}
