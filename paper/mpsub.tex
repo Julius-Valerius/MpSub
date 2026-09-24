@@ -262,7 +262,7 @@ Across iterations, a fresh minibatch $\mathcal B_{k+1}$ is drawn, while $\Delta_
 \subsubsection{In-place perturbations and seed regeneration}
 Storing the frame matrix $\bm D_k \in \mathbb{R}^{n \times p}$ explicitly would require $pn$ floating-point numbers. For an LLM such as OPT-125M ($n \approx 1.25 \times 10^8$) with $p = 20$ in FP32, this would require approximately $10$~GB of memory, which exceeds the parameter storage of the model itself.
 
-To avoid this memory overhead, \texttt{MpSub} never materializes the matrix $\bm D_k$ in memory. Instead, each exploratory direction $\bd_i^{(k)}$ ($i = 2, \ldots, p$) is generated on the fly using a deterministic seed $\operatorname{seed}(k, i) = (\operatorname{base\_seed} \cdot C_1 + k \cdot C_2 + i \cdot C_3) \bmod M$ with fixed primes $C_1, C_2, C_3$ and Mersenne prime $M = 2^{31}-1$. Weights are perturbed, evaluated, and restored in place, reconstructing directions as needed without storing them.
+To avoid this memory overhead, \texttt{MpSub} never materializes the matrix $\bm D_k$ in memory. Instead, each exploratory direction $\bd_i^{(k)}$ ($i = 2, \ldots, p$) is generated on the fly using a deterministic seed $\operatorname{seed}(k, i) = (\operatorname{base\_seed} \cdot C_1 + k \cdot C_2 + i \cdot C_3) \bmod M$, where $\operatorname{base\_seed}$ is the initial random seed of the training run, $C_1, C_2, C_3$ are fixed primes, and $M = 2^{31}-1$. Weights are perturbed, evaluated, and restored in place, reconstructing directions as needed without storing them.
 
 Once the subspace gradient $\bg_k$ and the coordinate step $\bs_s = -\Delta_k \bg_k / \|\bg_k\|_2$ are computed, the directions are regenerated a final time and combined in place to form the trial displacement
 \begin{equation}
@@ -558,13 +558,13 @@ Because $f$ is bounded below, summing this decrease over all such iterations giv
 \[
 \sum_{k\in\mathcal K_\varepsilon\cap G_k}\Delta_k < \infty.
 \]
-Since the conditioning events $G_k$ satisfy $\mathbb P(G_k\mid\mathcal F_k)\ge q > 1/2$ uniformly, applying the renewal property for probabilistically accurate models \cite{cartis2024randomizedsubspacederivativefreeoptimization} along the index subsequence $\mathcal K_\varepsilon$ implies that the sum over the entire set $\mathcal K_\varepsilon$ is finite:
+Since the conditioning events $G_k$ satisfy $\mathbb P(G_k\mid\mathcal F_k)\ge q > 1/2$ uniformly, applying the renewal property for probabilistically accurate models \cite{bandeira2014convergence,Gratton-2017} along the index subsequence $\mathcal K_\varepsilon$ implies that the sum over the entire set $\mathcal K_\varepsilon$ is finite:
 \[
 \sum_{k\in\mathcal K_\varepsilon}\Delta_k < \infty \qquad \text{almost surely}.
 \]
 \end{proof}
 
-Let $\beta_k \coloneqq \|\bm D_k\|_2$. Because $\bm D_k$ contains one unit vector and $p-1$ independent normalized Gaussian vectors $\bz_i/\sqrt{n}$, standard spectral norm bounds for Gaussian random matrices ensure that
+Let $\beta_k \coloneqq \|\bm D_k\|_2$. Because $\bm D_k$ contains one unit vector and $p-1$ independent scaled Gaussian vectors $\bz_i/\sqrt{n}$, standard spectral norm bounds for Gaussian random matrices ensure that
 \[
 \sup_k \mathbb E[\beta_k\mid\mathcal F_k] < \infty \qquad \text{and} \qquad \sup_k \mathbb E[\beta_k^2\mid\mathcal F_k] < \infty.
 \]
