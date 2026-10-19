@@ -45,20 +45,23 @@ MpSub/
 │   └── p_ablation_equal_budget/ # Equal-budget ablation results across seeds
 │
 ├── paper/                    # Paper manuscript, styles, and figures
-│   ├── mpsub.tex             # SIAM format LaTeX source
+│   ├── mpsub.tex             # COAP (svjour3) format LaTeX source
 │   ├── mpsub.pdf             # Precompiled manuscript
 │   ├── refs.bib              # Bibliography
 │   ├── make_figures.py       # Script to regenerate paper figures from logs
 │   ├── fig_convergence_models.pdf # Figure 1: Convergence trajectories
-│   ├── fig_sensitivity.pdf        # Figure 2: Step-size sensitivity
-│   └── fig_p_ablation.pdf         # Figure 3: Subspace dimension ablation
+│   └── fig_sensitivity.pdf        # Figure 2: Step-size sensitivity
 │
-├── surrogate/                # Standalone synthetic & toy problem benchmarks
+├── surrogate/                # Standalone synthetic & deterministic benchmarks
+│   ├── ablation_deterministic_cpu.py      # 1,000-D nonquadratic component ablation (Table 3)
+│   ├── ablation_deterministic_results.json # Saved 5-seed ablation summary for Table 3
 │   ├── surrogate_history_subspace.py
 │   ├── surrogate_dimension_model.py
 │   ├── surrogate_estimation_steprule.py
 │   └── surrogate_eval_recycle.py
 │
+├── MpSub_Overleaf/           # Standalone Overleaf / arXiv / COAP submission source package
+├── submission.zip            # Packaged submission archive
 ├── .gitignore                # Git ignore configuration
 └── README.md                 # This document
 ```
@@ -73,7 +76,7 @@ MpSub/
 
 ```bash
 # Clone the repository
-git clone https://github.com/PengchengXieLSEC/MpSub.git
+git clone https://github.com/Julius-Valerius/MpSub.git
 cd MpSub
 
 # Create and activate a virtual environment
@@ -158,7 +161,13 @@ To evaluate the impact of subspace dimension $p \in \{5, 10, 15, 20, 25, 30\}$:
 python experiments/run_p_ablation_equal_budget.py
 ```
 
-### 4. Regenerating Paper Figures
+### 4. Deterministic Component Ablation (Table 3)
+To run the 5-seed component ablation on the 1,000-dimensional smooth nonquadratic benchmark:
+```bash
+python surrogate/ablation_deterministic_cpu.py
+```
+
+### 5. Regenerating Paper Figures
 ```bash
 python paper/make_figures.py results/hp_cost paper
 ```
