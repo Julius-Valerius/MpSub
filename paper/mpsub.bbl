@@ -8,7 +8,8 @@
 
 \bibitem{audet2017derivative}
 Audet, C., Hare, W.: Derivative-free and blackbox optimization.
-\newblock Springer, Heidelberg (2017)
+\newblock Springer, Heidelberg (2017).
+\newblock \doi{10.1007/978-3-319-68913-5}
 
 \bibitem{bandeira2014convergence}
 Bandeira, A.S., Scheinberg, K., Vicente, L.N.: Convergence properties of trial
@@ -19,12 +20,14 @@ Bandeira, A.S., Scheinberg, K., Vicente, L.N.: Convergence properties of trial
 \bibitem{cartis2024randomizedsubspacederivativefreeoptimization}
 Cartis, C., Fowkes, J., Shao, Z.: Randomised subspace methods for non-convex
   optimization, with applications to nonlinear least-squares.
-\newblock arXiv preprint arXiv:2211.09873  (2022)
+\newblock arXiv preprint arXiv:2211.09873  (2022).
+\newblock \doi{10.48550/arXiv.2211.09873}
 
 \bibitem{cartis2023scalable}
 Cartis, C., Roberts, L.: Scalable subspace methods for derivative-free
   nonlinear least-squares optimization.
-\newblock Math. Program. \textbf{199}(1-2), 461--524 (2023)
+\newblock Math. Program. \textbf{199}(1-2), 461--524 (2023).
+\newblock \doi{10.1007/s10107-022-01836-1}
 
 \bibitem{chen2019zo}
 Chen, X., Liu, S., Xu, K., Li, X., Lin, X., Hong, M., Cox, D.: {ZO-AdaMM}:
@@ -40,33 +43,39 @@ Chen, Y., Zhang, Y., Cao, L., Yuan, K., Wen, Z.: Enhancing zeroth-order
 
 \bibitem{conn2000trust}
 Conn, A.R., Gould, N.I.M., Toint, P.L.: Trust Region Methods.
-\newblock SIAM, Philadelphia (2000)
+\newblock SIAM, Philadelphia (2000).
+\newblock \doi{10.1137/1.9780898719857}
 
 \bibitem{Conn2009a}
 Conn, A.R., Scheinberg, K., Vicente, L.N.: Global convergence of general
   derivative-free trust-region algorithms to first- and second-order critical
   points.
-\newblock SIAM J. Optim. \textbf{20}, 387--415 (2009)
+\newblock SIAM J. Optim. \textbf{20}, 387--415 (2009).
+\newblock \doi{10.1137/060673424}
 
 \bibitem{conn2009introduction}
 Conn, A.R., Scheinberg, K., Vicente, L.N.: Introduction to Derivative-Free
   Optimization.
-\newblock SIAM, Philadelphia (2009)
+\newblock SIAM, Philadelphia (2009).
+\newblock \doi{10.1137/1.9780898718768}
 
 \bibitem{duchi2015optimal}
 Duchi, J.C., Jordan, M.I., Wainwright, M.J., Wibisono, A.: Optimal rates for
   zero-order convex optimization: The power of two function evaluations.
-\newblock IEEE Trans. Inf. Theory \textbf{61}(5), 2788--2806 (2015)
+\newblock IEEE Trans. Inf. Theory \textbf{61}(5), 2788--2806 (2015).
+\newblock \doi{10.1109/TIT.2015.2409256}
 
 \bibitem{dzahini2024stochastic}
 Dzahini, K.J., Wild, S.M.: Stochastic trust-region algorithm in random
   subspaces with convergence and expected complexity analyses.
-\newblock SIAM J. Optim. \textbf{34}(3), 2671--2699 (2024)
+\newblock SIAM J. Optim. \textbf{34}(3), 2671--2699 (2024).
+\newblock \doi{10.1137/22M1524072}
 
 \bibitem{ghadimi2013stochastic}
 Ghadimi, S., Lan, G.: Stochastic first- and zeroth-order methods for nonconvex
   stochastic programming.
-\newblock SIAM J. Optim. \textbf{23}(4), 2341--2368 (2013)
+\newblock SIAM J. Optim. \textbf{23}(4), 2341--2368 (2013).
+\newblock \doi{10.1137/120880811}
 
 \bibitem{Gratton-2017}
 Gratton, S., Royer, C.W., Vicente, L.N., Zhang, Z.: Complexity and global rates
@@ -77,7 +86,8 @@ Gratton, S., Royer, C.W., Vicente, L.N., Zhang, Z.: Complexity and global rates
 \bibitem{hare2025expected}
 Hare, W., Jarry-Bolduc, G., Planiden, C.: Error bounds for overdetermined and
   underdetermined generalized centered simplex gradients.
-\newblock IMA J. Numer. Anal. \textbf{44}(3), 1717--1749 (2024)
+\newblock IMA J. Numer. Anal. \textbf{44}(3), 1717--1749 (2024).
+\newblock \doi{10.1093/imanum/draa089}
 
 \bibitem{hu2022lora}
 Hu, E.J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L.,
@@ -94,11 +104,13 @@ Kozak, D., Becker, S., Doostan, A., Tenorio, L.: A stochastic subspace approach
 \bibitem{kozak2023zeroth}
 Kozak, D., Molinari, C., Rosasco, L., Tenorio, L., Villa, S.: Zeroth-order
   optimization with orthogonal random directions.
-\newblock Math. Program. \textbf{199}(1-2), 1179--1219 (2023)
+\newblock Math. Program. \textbf{199}(1-2), 1179--1219 (2023).
+\newblock \doi{10.1007/s10107-022-01866-9}
 
 \bibitem{larson_menickelly_wild_2019}
 Larson, J., Menickelly, M., Wild, S.M.: Derivative-free optimization methods.
-\newblock Acta Numer. \textbf{28}, 287--404 (2019)
+\newblock Acta Numer. \textbf{28}, 287--404 (2019).
+\newblock \doi{10.1017/S0962492919000060}
 
 \bibitem{liu2024sparse}
 Liu, Y., Zhang, Z., Hua, W., Zhou, T.: Sparse {MeZO}: Less parameters for
@@ -115,23 +127,27 @@ Malladi, S., Gao, T., Nichani, E., Damian, A., Lee, J.D., Chen, D., Arora, S.:
 \bibitem{Menickelly2023}
 Menickelly, M.: Avoiding geometry improvement in derivative-free model-based
   methods via randomization.
-\newblock arXiv preprint arXiv:2305.17336  (2023)
+\newblock arXiv preprint arXiv:2305.17336  (2023).
+\newblock \doi{10.48550/arXiv.2305.17336}
 
 \bibitem{nesterov2017random}
 Nesterov, Y., Spokoiny, V.: Random gradient-free minimization of convex
   functions.
-\newblock Found. Comput. Math. \textbf{17}(2), 527--566 (2017)
+\newblock Found. Comput. Math. \textbf{17}(2), 527--566 (2017).
+\newblock \doi{10.1007/s10208-015-9296-2}
 
 \bibitem{powell2006newuoa}
 Powell, M.J.D.: The {NEWUOA} software for unconstrained optimization without
   derivatives.
 \newblock In: Large-Scale Nonlinear Optimization, pp. 255--297. Springer,
-  Boston, MA (2006)
+  Boston, MA (2006).
+\newblock \doi{10.1007/0-387-30065-1_16}
 
 \bibitem{spall1992multivariate}
 Spall, J.C.: Multivariate stochastic approximation using a simultaneous
   perturbation gradient approximation.
-\newblock IEEE Trans. Autom. Control \textbf{37}(3), 332--341 (1992)
+\newblock IEEE Trans. Autom. Control \textbf{37}(3), 332--341 (1992).
+\newblock \doi{10.1109/9.119632}
 
 \bibitem{wang2019superglue}
 Wang, A., Pruksachatkun, Y., Nangia, N., Singh, A., Michael, J., Hill, F.,
@@ -160,7 +176,9 @@ Yu, Z., Zhou, P., Wang, S., Li, J., Tian, M., Huang, H.: Zeroth-order
 \bibitem{yuan2007subspace}
 Yuan, Y.: Subspace techniques for nonlinear optimization.
 \newblock In: R.~Jeltsch, D.Q. Li, I.H. Sloan (eds.) Some Topics in Industrial
-  and Applied Mathematics, pp. 206--218. Higher Education Press, Beijing (2007)
+  and Applied Mathematics, pp. 206--218. Higher Education Press, Beijing
+  (2007).
+\newblock \doi{10.1142/9789812709356_0012}
 
 \bibitem{yuan2014review}
 Yuan, Y.: A review on subspace methods for nonlinear optimization.
@@ -172,11 +190,12 @@ Zhang, S., Roller, S., Goyal, N., Artetxe, M., Chen, M., Chen, S., Dewan, C.,
   Diab, M., Li, X., Lin, X.V., Mihaylov, T., Ott, M., Shleifer, S., Shuster,
   K., Simig, D., Koura, P.S., Sridhar, A., Wang, T., Zettlemoyer, L.: {OPT}:
   Open pre-trained transformer language models.
-\newblock arXiv preprint arXiv:2205.01068  (2022)
+\newblock arXiv preprint arXiv:2205.01068  (2022).
+\newblock \doi{10.48550/arXiv.2205.01068}
 
 \bibitem{zhao2024second}
 Zhao, Y., Dang, S., Ye, H., Dai, G., Qian, Y., Tsang, I.W.: Second-order
-  fine-tuning without pain for {LLMs}: A hessian informed zeroth-order
+  fine-tuning without pain for {LLMs}: A {Hessian} informed zeroth-order
   optimizer.
 \newblock In: International Conference on Learning Representations (ICLR)
   (2025)
