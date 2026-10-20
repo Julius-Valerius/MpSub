@@ -31,8 +31,8 @@ plt.rcParams.update({
     'font.family': 'serif',
     'font.serif': ['STIXGeneral', 'Times New Roman', 'DejaVu Serif'],
     'mathtext.fontset': 'stix',
-    'font.size': 10, 'axes.titlesize': 10, 'axes.labelsize': 10,
-    'xtick.labelsize': 9, 'ytick.labelsize': 9, 'legend.fontsize': 9,
+    'font.size': 10.5, 'axes.titlesize': 11, 'axes.labelsize': 10.5,
+    'xtick.labelsize': 9.5, 'ytick.labelsize': 9.5, 'legend.fontsize': 9.5,
     'axes.linewidth': 0.8, 'axes.grid': True, 'grid.linestyle': '--',
     'grid.alpha': 0.3, 'grid.linewidth': 0.5, 'axes.axisbelow': True,
     'legend.frameon': False, 'figure.dpi': 150, 'savefig.dpi': 300,
@@ -105,7 +105,7 @@ def main():
                                 zorder=2)
             tag = (r'MpSub, fixed default $\Delta_0=%s$' % mathhp(hp)
                    if method == 'MpSub'
-                   else r'MeZO, dev-selected $\eta=%s$' % mathhp(hp))
+                   else r'MeZO, dev-selected $\eta_{\mathrm{M}}=%s$' % mathhp(hp))
             ax.plot(x, mean, color=colour, marker=marker, markersize=4.2,
                     linewidth=1.4, linestyle=ls, markeredgecolor='white',
                     markeredgewidth=0.4, label=tag, zorder=3)
